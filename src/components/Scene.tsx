@@ -28,17 +28,17 @@ export default function Scene({
       { rootMargin: "100px" },
     );
     observer.observe(el);
-    useEffect(() => {
-      root.current?.dispatchEvent(
-        new CustomEvent("scene-zoom", { detail: zoom }),
-      );
-    }, [zoom]);
     return () => {
       alive = false;
       observer.disconnect();
       cleanup?.();
     };
   }, [variant]);
+  useEffect(() => {
+    root.current?.dispatchEvent(
+      new CustomEvent("scene-zoom", { detail: zoom }),
+    );
+  }, [zoom]);
   return (
     <div
       className={"scene " + (ready ? "scene-ready" : "")}

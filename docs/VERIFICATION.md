@@ -60,3 +60,7 @@ Repository source and demo URLs are preserved from verified project READMEs. Dir
 ## Deployment boundary
 
 Only a dedicated review branch and draft pull request are prepared. No merge or production deployment is part of this change. Vercel configuration has changed from a buildless root to Vite `npm run build` → `dist`; check the preview’s project settings if older dashboard overrides remain.
+
+## Project preview crash fix
+
+The scene zoom effect was incorrectly nested inside its initialization effect. React rejects that hook call when a project preview mounts. Moved it to component scope, preserving the existing 3D preview and zoom behavior. Added a source-wide Rules of Hooks check to the production build; verified that it rejects the previous broken Scene source and accepts the corrected source. Production build, existing model tests and static output verification pass. Rendered browser/device scroll QA remains unavailable in this environment.
