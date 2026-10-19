@@ -1,6 +1,6 @@
 # Achyuth PV / Cyber Ronin 2.0
 
-A complete React + TypeScript portfolio with nine prerendered pages, original Three.js architectural studies, project case studies and interactive explanatory models. Personal identity: **Achyuth PV · B.Tech IT · SRMIST Ramapuram · IT-A**.
+A complete React + TypeScript portfolio with nine prerendered pages, a cinematic helmet-film hero and original metallic Three.js studies, project case studies and interactive explanatory models. Personal identity: **Achyuth PV · B.Tech IT · SRMIST Ramapuram · IT-A**.
 
 ## Run and build
 
@@ -26,7 +26,7 @@ npm run preview
 
 | Route | Experience |
 |---|---|
-| `/` | Architectural gateway, perspective selector, selected work and original section anchors |
+| `/` | Exact supplied helmet film, cinematic typography, selected work and original section anchors |
 | `/about` | Personal story, identity card and interest explorer |
 | `/projects` | Filterable project index with original visual studies |
 | `/projects/supplylens` | Supply-chain case study and inventory runway model |
@@ -61,7 +61,7 @@ The repository now includes `vercel.json` declaring Vite, `npm ci`, `npm run bui
 
 Read the [25-portfolio comparison](docs/RESEARCH.md), [audit and design decisions](docs/AUDIT.md), [component research](docs/COMPONENT-RESEARCH.md), and [verification report](docs/VERIFICATION.md).
 
-Five signature systems connect the site: architectural gateway, mission index navigation, project portals and labs, capability constellation, and closing signal composer. Decorative art is original code, not fabricated product screenshots. Fonts are bundled locally. The technical demonstrations are explicitly simplified educational models, not live integrations.
+Signature systems connect the site: cinematic ronin film, mission index navigation, expanding project inspector with 1×–2× camera zoom, project labs, capability constellation, and closing signal composer. Decorative art is original code, not fabricated product screenshots. Fonts are bundled locally. The technical demonstrations are explicitly simplified educational models, not live integrations.
 
 ## Important behavior and limitations
 
@@ -70,3 +70,8 @@ Five signature systems connect the site: architectural gateway, mission index na
 - No internships, dates, testimonials, metrics or proficiency percentages were invented. Existing self-reported achievements are retained with their provenance.
 - Content and normal links remain readable without JavaScript. Interactive controls require JavaScript; a no-script navigation is provided.
 - Browser rendering, real device interaction, screen-reader behavior, Core Web Vitals and Lighthouse still require review. Do not represent the static checks as browser or accessibility certification.
+
+## Cinematic refinement
+The hero uses the exact user-supplied CloudFront MP4 (approximately 5.65 MB), not an image substitution. Video pauses out of view, in hidden tabs and for reduced-motion preferences, and has a manual pause/play control. Its availability depends on that external asset. TeX Gyre Heros regular/bold are bundled as renamed Latin subsets, AU Grotesk; attribution and license are in public/assets. The Atelier reference is adapted to Achyuth’s full portfolio, not published as a fictional studio or a one-section replacement.
+
+Project artwork opens a native dialog that expands from the selected card and contracts back. The inspector offers zoom out, reset, zoom in, full case study and demo links. Pointer/focus previews load actual Three.js scenes; static SVG artwork remains without WebGL. Metallic network, ledger and optical-risk studies use environmental reflections and amber detail, with explicit GPU cleanup.

@@ -1,73 +1,10 @@
-import { useState } from "react";
 import { projects } from "../data";
 import { Button, Label, ProjectCard } from "../components/UI";
-import Scene from "../components/Scene";
+import CinematicHero from "../components/CinematicHero";
 export default function Home() {
-  const [phase, setPhase] = useState(0);
   return (
     <>
-      <section id="home" className="hero">
-        <div className="hero-topline label">
-          <span>
-            <i className="status-dot" /> STUDENT DEVELOPER / CHENNAI, IN
-          </span>
-          <span>PORTFOLIO — V.02</span>
-        </div>
-        <div className="hero-title">
-          <h1>
-            Building what
-            <br />
-            comes <em>next.</em>
-          </h1>
-          <div className="hero-name">
-            ACHYUTH PV <span>アーキテクト / DIGITAL ARCHITECT</span>
-          </div>
-        </div>
-        <div className="hero-scene">
-          <Scene
-            variant={phase === 0 ? "gate" : phase === 1 ? "network" : "risk"}
-          />
-        </div>
-        <div className="hero-bottom">
-          <div>
-            <p className="hero-intro">
-              Software with intent.
-              <br />
-              At the intersection of{" "}
-              <span>
-                {
-                  [
-                    "product, people and possibility.",
-                    "systems, signals and intelligence.",
-                    "finance, trust and technology.",
-                  ][phase]
-                }
-              </span>
-            </p>
-            <Button href="/projects" primary>
-              Explore selected work
-            </Button>
-          </div>
-          <div className="phase-control">
-            <span className="label">SELECT A PERSPECTIVE</span>
-            <div>
-              {["Build", "Understand", "Protect"].map((x, i) => (
-                <button
-                  key={x}
-                  aria-pressed={phase === i}
-                  onClick={() => setPhase(i)}
-                >
-                  <span>0{i + 1}</span>
-                  {x}
-                </button>
-              ))}
-            </div>
-          </div>
-          <a className="scroll-cue" href="#projects">
-            SCROLL TO EXPLORE <span>↓</span>
-          </a>
-        </div>
-      </section>
+      <CinematicHero />
       <div className="identity-strip">
         <span>FULL-STACK DEVELOPMENT</span>
         <span>AI & INTELLIGENCE</span>

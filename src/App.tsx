@@ -3,6 +3,7 @@ import { flushSync } from "react-dom";
 import { projects, nav, pageTitle } from "./data";
 import { Label, Heading, Button, Arrow } from "./components/UI";
 import Home from "./pages/Home";
+import ProjectInspector from "./components/ProjectInspector";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import CaseStudy from "./pages/CaseStudy";
@@ -144,10 +145,13 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
     );
   return (
     <>
+      <ProjectInspector />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
+      <header
+        className={"site-header " + (path === "/" ? "cinema-header" : "")}
+      >
         <a className="brand" href="/" aria-label="Achyuth PV home">
           <svg width="27" height="29" viewBox="0 0 27 29" aria-hidden="true">
             <path

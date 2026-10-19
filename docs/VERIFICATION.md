@@ -1,3 +1,13 @@
+# Cinematic refinement — current verification
+
+The original report below records the first V2 iteration. This revision replaces the abstract home gateway with the exact supplied helmet MP4, the typography with two locally bundled AU Grotesk (TeX Gyre Heros) Latin subsets, and basic 3D geometry with metallic network, ledger and risk studies. It adds a native-dialog project inspector with card-to-panel expansion/contraction and 1×–2× camera zoom.
+
+Current build: initial JS ~89.7 KB gzip; lazy scene/Three.js ~127 KB gzip; CSS ~10.4 KB gzip. Two font files total 28.6 KB. Video responds HTTP 200, content-type video/mp4, content length 5,645,541 bytes. Video is an intentional increase in media cost to follow the exact reference. It is not counted in JavaScript budgets. Build, static output checks, font signatures and model tests pass. Vite emits a size advisory because the lazy WebGL chunk exceeds 500 KB uncompressed; it stays within the existing 180 KB gzip budget.
+
+Manual review still required: film playback/autoplay on iOS; 320px through ultrawide composition; Escape/focus return and open/close interruption in the inspector; all zoom endpoints and reset; reduced motion; pointer previews; WebGL-disabled fallback; runtime console and hydration; smoothness on real devices. Browser QA is unavailable under the same managed workflow restriction described below. No visual or Lighthouse score is claimed. The uploaded reference was inspected as a still image; it does not establish exact animation timing.
+
+---
+
 # Verification — Cyber Ronin 2.0
 
 ## Completed

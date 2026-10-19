@@ -1,6 +1,7 @@
-import { type ReactNode, type CSSProperties } from "react";
+import { useState, type ReactNode, type CSSProperties } from "react";
 import { type Project } from "../data";
 import Magnet from "../vendor/Magnet";
+import Scene from "./Scene";
 import { useReducedMotion } from "./useReducedMotion";
 export const Arrow = () => <span aria-hidden="true">↗</span>;
 export function Button({
@@ -48,6 +49,12 @@ export function Heading({
   );
 }
 export function Art({ kind }: { kind: string }) {
+  const id = "material-" + kind;
+  const strand = (phase: number) =>
+    Array.from({ length: 81 }, (_, i) => {
+      const t = i / 80;
+      return `${i ? "L" : "M"}${90 + t * 460},${250 - t * 125 + Math.sin(t * Math.PI * 5 + phase) * 52}`;
+    }).join(" ");
   return (
     <svg
       className={"project-art " + kind}
@@ -55,111 +62,94 @@ export function Art({ kind }: { kind: string }) {
       aria-hidden="true"
     >
       <defs>
-        <pattern
-          id={"grid-" + kind}
-          width="40"
-          height="40"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M40 0H0V40"
-            fill="none"
-            stroke="currentColor"
-            opacity=".08"
-          />
-        </pattern>
+        <linearGradient id={id} x1="0" y1="0" x2=".8" y2="1">
+          <stop stopColor="#aab1a9" />
+          <stop offset=".2" stopColor="#141916" />
+          <stop offset=".45" stopColor="#505a50" />
+          <stop offset=".6" stopColor="#080c09" />
+          <stop offset=".83" stopColor="#b8bcae" />
+          <stop offset="1" stopColor="#151a15" />
+        </linearGradient>
+        <linearGradient id={id + "-fire"}>
+          <stop stopColor="#682a0b" />
+          <stop offset=".5" stopColor="#ffb46d" />
+          <stop offset="1" stopColor="#ca561d" />
+        </linearGradient>
       </defs>
-      <rect width="640" height="380" fill={"url(#grid-" + kind + ")"} />
       {kind === "supplylens" ? (
-        <g fill="none" stroke="currentColor">
-          {[
-            [120, 190],
-            [260, 100],
-            [260, 280],
-            [420, 120],
-            [500, 250],
-          ].map(([x, y], i) => (
-            <g key={i}>
-              <path d={`M320 190L${x} ${y}`} opacity=".45" />
-              <rect
-                x={x - 22}
-                y={y - 22}
-                width="44"
-                height="44"
-                transform={`rotate(45 ${x} ${y})`}
+        <g fill="none">
+          {Array.from({ length: 23 }, (_, i) => {
+            const t = i / 22,
+              x = 90 + t * 460,
+              y = 250 - t * 125,
+              h = Math.sin(t * Math.PI * 5) * 52;
+            return (
+              <path
+                key={i}
+                d={`M${x} ${y - h} Q${x + 12} ${y} ${x} ${y + h}`}
+                stroke={`url(#${id + "-fire"})`}
+                strokeWidth={i % 3 === 0 ? 4 : 2}
+                opacity={i % 3 === 0 ? 1 : 0.5}
               />
-              <circle cx={x} cy={y} r="4" fill="currentColor" />
+            );
+          })}
+          {[0, Math.PI].map((phase) => (
+            <g key={phase}>
+              <path d={strand(phase)} stroke={`url(#${id})`} strokeWidth="14" />
+              <path
+                d={strand(phase)}
+                stroke="#f3e2c1"
+                strokeWidth=".7"
+                opacity=".5"
+              />
             </g>
           ))}
-          <circle cx="320" cy="190" r="48" />
-          <circle
-            className="orbit"
-            cx="320"
-            cy="190"
-            r="65"
-            strokeDasharray="4 12"
-          />
-          <text
-            x="320"
-            y="195"
-            textAnchor="middle"
-            stroke="none"
-            fill="currentColor"
-            fontSize="12"
-          >
-            SL
-          </text>
         </g>
       ) : kind === "treasuryflow" ? (
-        <g fill="none" stroke="currentColor">
-          {[0, 1, 2].map((i) => (
-            <g key={i} transform={`translate(${145 + i * 120} ${90 + i * 38})`}>
-              <path d="M0 0L150 -30L240 20L90 50Z" fill="#171916" />
-              <path d="M0 0V80L90 130L240 100V20M90 50V130" />
-              <path d="M20 35L65 60M20 47L50 64" opacity=".5" />
+        <g transform="translate(320 190) rotate(-24)" fill="none">
+          {Array.from({ length: 7 }, (_, i) => (
+            <g key={i} transform={`translate(0 ${(i - 3) * 19})`}>
+              <ellipse rx="137" ry="65" stroke="#090c09" strokeWidth="20" />
+              <ellipse
+                rx="137"
+                ry="65"
+                stroke={`url(#${id})`}
+                strokeWidth="10"
+              />
+              <path
+                d="M-137 0A137 65 0 0 0 90 49"
+                stroke={`url(#${id + "-fire"})`}
+                strokeWidth="2"
+              />
+              <ellipse rx="65" ry="30" stroke={`url(#${id})`} strokeWidth="8" />
             </g>
           ))}
-          <path
-            className="flow-line"
-            d="M100 310H480L540 250"
-            strokeDasharray="8 8"
-          />
-          <circle cx="540" cy="250" r="6" fill="currentColor" />
         </g>
       ) : (
-        <g transform="translate(320 190)" fill="none" stroke="currentColor">
-          {[55, 90, 125, 158].map((r) => (
-            <ellipse
-              key={r}
-              rx={r}
-              ry={r * 0.65}
-              transform="rotate(-25)"
-              opacity={r === 125 ? 1 : 0.3}
-            />
+        <g transform="translate(320 190)" fill="none">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <g key={i} transform={`rotate(${i * 27 - 35})`}>
+              <ellipse
+                rx={65 + i * 24}
+                ry={50 + i * 13}
+                stroke={`url(#${id})`}
+                strokeWidth="8"
+              />
+              <path
+                d={`M${65 + i * 24} 0A${65 + i * 24} ${50 + i * 13} 0 0 0 0 ${-50 - i * 13}`}
+                stroke={`url(#${id + "-fire"})`}
+                strokeWidth="2"
+              />
+            </g>
           ))}
-          <path
-            d="M-220 40L-160 40L-120 0L-85 65L-40 -70L0 10L45 -5L90 -80L130 -20L210 -20"
-            strokeWidth="2"
+          <circle
+            r="35"
+            fill="#111510"
+            stroke={`url(#${id})`}
+            strokeWidth="5"
           />
-          <circle cx="90" cy="-80" r="6" fill="currentColor" />
-          <path d="M0 -170V170M-230 0H230" opacity=".2" />
         </g>
       )}
-      <text
-        x="24"
-        y="350"
-        fill="currentColor"
-        opacity=".5"
-        fontSize="10"
-        letterSpacing="2"
-      >
-        {kind === "supplylens"
-          ? "CONNECTED INVENTORY"
-          : kind === "treasuryflow"
-            ? "PROGRAMMABLE TRUST"
-            : "MODELED EXPOSURE"}{" "}
-        / CONCEPT STUDY
-      </text>
     </svg>
   );
 }
@@ -170,18 +160,55 @@ export function ProjectCard({
   p: Project;
   wide?: boolean;
 }) {
+  const [preview, setPreview] = useState(false);
   return (
     <article
       className={"project-card " + (wide ? "wide" : "")}
       style={{ "--project": p.color } as CSSProperties}
     >
       <a
-        className="art-link"
+        className={"art-link " + (preview ? "preview-live" : "")}
+        onPointerEnter={(e) => {
+          if (e.pointerType === "mouse") setPreview(true);
+        }}
+        onPointerLeave={() => setPreview(false)}
+        onFocus={() => setPreview(true)}
+        onBlur={() => setPreview(false)}
         href={"/projects/" + p.slug}
-        aria-label={"Explore " + p.name}
+        aria-label={"Inspect " + p.name}
+        onClick={(e) => {
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          e.stopPropagation();
+          setPreview(false);
+          const r = e.currentTarget.getBoundingClientRect();
+          window.dispatchEvent(
+            new CustomEvent("inspect-project", {
+              detail: {
+                slug: p.slug,
+                rect: { x: r.x, y: r.y, width: r.width, height: r.height },
+                trigger: e.currentTarget,
+              },
+            }),
+          );
+        }}
       >
         <Art kind={p.slug} />
-        <span className="portal-arrow">↗</span>
+        {preview && (
+          <div className="card-live-scene">
+            <Scene
+              variant={
+                p.slug === "supplylens"
+                  ? "network"
+                  : p.slug === "treasuryflow"
+                    ? "ledger"
+                    : "risk"
+              }
+            />
+          </div>
+        )}
+        <span className="portal-arrow">＋</span>
+        <span className="inspect-hint">CLICK TO INSPECT</span>
         <span className="project-num">/{p.number}</span>
       </a>
       <div className="project-info">

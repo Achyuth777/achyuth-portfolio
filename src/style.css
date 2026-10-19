@@ -1,7 +1,3 @@
-@import "@fontsource/inter/latin-400.css";
-@import "@fontsource/inter/latin-500.css";
-@import "@fontsource/space-grotesk/latin-400.css";
-@import "@fontsource/space-grotesk/latin-500.css";
 :root {
   --bg: #101211;
   --surface: #191c19;
@@ -10,7 +6,7 @@
   --accent: #e89b68;
   --line: #ede8dc26;
   --project: var(--accent);
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "AU Grotesk", system-ui, sans-serif;
   color: var(--ink);
   background: var(--bg);
   font-synthesis: none;
@@ -86,7 +82,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "AU Grotesk", sans-serif;
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.055em;
@@ -163,7 +159,7 @@ main:focus {
   align-items: center;
   gap: 13px;
   font:
-    500 13px/1.5 "Space Grotesk",
+    500 13px/1.5 "AU Grotesk",
     sans-serif;
   letter-spacing: 0.02em;
 }
@@ -239,57 +235,6 @@ main:focus {
   margin-right: 7px;
   vertical-align: middle;
 }
-.hero {
-  position: relative;
-  min-height: 750px;
-  height: calc(100svh - 94px);
-  max-height: 1100px;
-  padding: 30px 5vw 44px;
-  isolation: isolate;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 68% 47%, #4e3b282a, transparent 58%);
-}
-.hero-topline {
-  justify-content: space-between;
-  position: relative;
-  z-index: 2;
-}
-.hero-title {
-  position: relative;
-  z-index: 2;
-  margin-top: 58px;
-  pointer-events: none;
-}
-.hero h1 {
-  font-size: clamp(72px, 9.1vw, 142px);
-  line-height: 0.95;
-  letter-spacing: -0.07em;
-  max-width: 850px;
-}
-.hero h1 em {
-  color: var(--ink);
-}
-.hero-name {
-  font: 12px/1.5 monospace;
-  letter-spacing: 0.15em;
-  margin-top: 28px;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-.hero-name span {
-  font-size: 8px;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-}
-.hero-scene {
-  position: absolute;
-  right: -5%;
-  top: 25px;
-  width: 70%;
-  height: 90%;
-  z-index: 0;
-}
 .scene {
   width: 100%;
   height: 100%;
@@ -315,27 +260,6 @@ main:focus {
   font: 8px monospace;
   letter-spacing: 0.15em;
   color: #a9ada280;
-}
-.hero-bottom {
-  position: absolute;
-  bottom: 44px;
-  left: 5vw;
-  right: 5vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 28px;
-  z-index: 2;
-}
-.hero-intro {
-  font-size: 14px;
-  line-height: 1.7;
-  max-width: 300px;
-  margin-bottom: 26px;
-  color: var(--ink);
-}
-.hero-intro span {
-  color: var(--muted);
 }
 .button {
   display: inline-flex;
@@ -367,41 +291,6 @@ main:focus {
 }
 .button:hover span {
   transform: translate(2px, -2px);
-}
-.phase-control {
-  padding-bottom: 1px;
-}
-.phase-control > div {
-  display: flex;
-  gap: 20px;
-  margin-top: 13px;
-}
-.phase-control button {
-  font-size: 11px;
-  border-top: 1px solid #ede8dc33;
-  padding: 12px 0 0;
-  text-align: left;
-  min-width: 76px;
-}
-.phase-control button span {
-  display: block;
-  font: 9px monospace;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-.phase-control button[aria-pressed="true"] {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-.scroll-cue {
-  font: 8px monospace;
-  letter-spacing: 0.13em;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.scroll-cue span {
-  font-size: 25px;
 }
 .identity-strip {
   padding: 21px 5vw;
@@ -576,7 +465,7 @@ main:focus {
   justify-content: center;
   flex-direction: column;
   transform: rotate(-12deg);
-  font-family: "Space Grotesk";
+  font-family: "AU Grotesk";
   font-size: 32px;
 }
 .seal small {
@@ -639,7 +528,7 @@ main:focus {
   gap: 24px;
 }
 .footer-brand {
-  font: 20px "Space Grotesk";
+  font: 20px "AU Grotesk";
   color: var(--ink);
 }
 .page {
@@ -681,7 +570,7 @@ main:focus {
   position: relative;
 }
 .identity-monogram {
-  font: clamp(80px, 14vw, 210px)/1 "Space Grotesk";
+  font: clamp(80px, 14vw, 210px)/1 "AU Grotesk";
   letter-spacing: -0.11em;
   padding: 40px 0 60px;
   color: #c0c8b0;
@@ -748,7 +637,7 @@ main:focus {
   border-top: 1px solid var(--line);
   padding: 25px 0;
   text-align: left;
-  font: 24px "Space Grotesk";
+  font: 24px "AU Grotesk";
 }
 .interest-tabs button > span:first-child {
   font: 10px monospace;
@@ -770,7 +659,7 @@ main:focus {
   position: absolute;
   top: 5px;
   right: 25px;
-  font: 100px/1 "Space Grotesk";
+  font: 100px/1 "AU Grotesk";
   opacity: 0.08;
 }
 .interest-panel h3 {
@@ -883,7 +772,7 @@ main:focus {
   color: var(--project);
 }
 .case-tagline {
-  font: clamp(23px, 2.8vw, 42px)/1.2 "Space Grotesk";
+  font: clamp(23px, 2.8vw, 42px)/1.2 "AU Grotesk";
   color: var(--ink);
   letter-spacing: -0.04em;
 }
@@ -975,7 +864,7 @@ main:focus {
   margin: 30px 0;
 }
 .lab-reading strong {
-  font: 72px/1 "Space Grotesk";
+  font: 72px/1 "AU Grotesk";
   letter-spacing: -0.06em;
 }
 .lab-reading span {
@@ -1119,12 +1008,12 @@ main:focus {
   margin-left: auto;
 }
 .architecture li div {
-  font: 19px "Space Grotesk";
+  font: 19px "AU Grotesk";
 }
 .architecture small {
   display: block;
   margin-top: 8px;
-  font: 11px Inter;
+  font: 11px "AU Grotesk";
   color: var(--muted);
 }
 .feature-section {
@@ -1199,7 +1088,7 @@ main:focus {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font: 48px "Space Grotesk";
+  font: 48px "AU Grotesk";
   text-align: center;
   pointer-events: none;
 }
@@ -1293,7 +1182,7 @@ main:focus {
   gap: 10vw;
 }
 .journey-mark {
-  font: 120px/1 "Space Grotesk";
+  font: 120px/1 "AU Grotesk";
   color: var(--accent);
   margin-bottom: 30px;
 }
@@ -1381,7 +1270,7 @@ main:focus {
   margin-bottom: 30px;
 }
 .contact-email {
-  font: clamp(16px, 1.8vw, 27px) "Space Grotesk";
+  font: clamp(16px, 1.8vw, 27px) "AU Grotesk";
   color: var(--ink);
   display: block;
   margin: 23px 0;
@@ -1509,7 +1398,7 @@ main:focus {
 .command-menu nav a {
   padding: 16px 0;
   border-bottom: 1px solid var(--line);
-  font: 22px "Space Grotesk";
+  font: 22px "AU Grotesk";
   display: flex;
   gap: 20px;
   align-items: center;
@@ -1530,10 +1419,6 @@ main:focus {
   display: block;
   margin-top: 25px;
   font: 9px monospace;
-}
-.page-heading,
-.hero-title {
-  animation: enter 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 .revealed {
   animation: subtle-reveal 0.65s ease both;
@@ -1575,19 +1460,6 @@ main:focus {
   }
 }
 @media (min-width: 1600px) {
-  .hero-scene {
-    right: 0;
-    width: 62%;
-  }
-  .hero-title {
-    margin-top: 80px;
-  }
-  .hero-intro {
-    font-size: 17px;
-  }
-  .hero {
-    padding-inline: max(5vw, calc((100vw - 1600px) / 2));
-  }
   .section {
     padding-inline: max(5vw, calc((100vw - 1600px) / 2));
   }
@@ -1598,21 +1470,6 @@ main:focus {
   }
   .header-right {
     gap: 18px;
-  }
-  .hero {
-    min-height: 780px;
-  }
-  .hero-scene {
-    width: 80%;
-    right: -14%;
-    top: 90px;
-    height: 72%;
-  }
-  .hero h1 {
-    font-size: 10vw;
-  }
-  .scroll-cue {
-    display: none;
   }
   .project-grid {
     gap: 16px;
@@ -1655,54 +1512,6 @@ main:focus {
   }
   .desktop-nav {
     display: none;
-  }
-  .hero {
-    height: auto;
-    min-height: 850px;
-    padding-top: 25px;
-  }
-  .hero-topline > span:last-child {
-    display: none;
-  }
-  .hero-title {
-    margin-top: 42px;
-  }
-  .hero h1 {
-    font-size: clamp(66px, 11.5vw, 92px);
-  }
-  .hero-name {
-    font-size: 10px;
-    gap: 16px;
-  }
-  .hero-name span {
-    font-size: 6px;
-  }
-  .hero-scene {
-    width: 90%;
-    height: 490px;
-    top: 215px;
-    right: -10%;
-  }
-  .hero-bottom {
-    bottom: 35px;
-    align-items: start;
-  }
-  .hero-intro {
-    max-width: 230px;
-    font-size: 12px;
-  }
-  .phase-control {
-    margin-top: 65px;
-  }
-  .phase-control > div {
-    gap: 10px;
-  }
-  .phase-control button {
-    min-width: 65px;
-    font-size: 10px;
-  }
-  .phase-control .label {
-    font-size: 8px;
   }
   .identity-strip {
     display: grid;
@@ -1894,76 +1703,6 @@ main:focus {
     font-size: 10px;
     padding: 9px 12px;
     gap: 20px;
-  }
-  .hero {
-    min-height: 870px;
-    padding-inline: 6vw;
-  }
-  .hero-topline {
-    font-size: 7px;
-    letter-spacing: 0.09em;
-  }
-  .hero-title {
-    margin-top: 34px;
-  }
-  .hero h1 {
-    font-size: clamp(58px, 13.2vw, 74px);
-    line-height: 1.02;
-  }
-  .hero-name {
-    display: block;
-    margin-top: 23px;
-    font-size: 10px;
-  }
-  .hero-name span {
-    display: block;
-    margin-top: 8px;
-    font-size: 6px;
-  }
-  .hero-scene {
-    height: 410px;
-    width: 120%;
-    right: -20%;
-    top: 225px;
-  }
-  .hero-bottom {
-    left: 6vw;
-    right: 6vw;
-    bottom: 28px;
-    display: block;
-  }
-  .hero-intro {
-    max-width: 260px;
-    font-size: 12px;
-    margin-bottom: 20px;
-  }
-  .hero-bottom .button {
-    padding: 12px 17px;
-  }
-  .phase-control {
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-  }
-  .phase-control .label {
-    max-width: 75px;
-    font-size: 7px;
-  }
-  .phase-control > div {
-    margin: 0;
-    gap: 12px;
-    flex: 1;
-    justify-content: end;
-  }
-  .phase-control button {
-    min-width: 53px;
-    font-size: 9px;
-    padding-top: 7px;
-  }
-  .phase-control button span {
-    font-size: 7px;
   }
   .identity-strip {
     padding: 18px 6vw;
@@ -2398,12 +2137,6 @@ main:focus {
   .art-link:hover .project-art {
     transform: none;
   }
-  .revealed,
-  .hero-title,
-  .page-heading {
-    transform: none;
-    opacity: 1;
-  }
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
@@ -2411,37 +2144,11 @@ main:focus {
   }
 }
 @media (pointer: coarse) {
-  .menu-button,
-  .filter-row button,
-  .universe-node,
-  .phase-control button {
-    min-height: 44px;
-  }
   .art-link:hover .project-art {
     transform: none;
   }
 }
 @media (max-width: 540px) {
-  .label,
-  .hero-topline,
-  .hero-name span,
-  .identity-strip,
-  .case-heading .label,
-  .case-cover .label,
-  .lab .label,
-  .project-info .label,
-  .project-info .label > span,
-  .phase-control .label,
-  .command-top .label {
-    font-size: 9px;
-    letter-spacing: 0.04em;
-  }
-  .hero-name span {
-    font-size: 8px;
-  }
-  .phase-control .label {
-    font-size: 8px;
-  }
   .identity-strip {
     font-size: 8px;
   }

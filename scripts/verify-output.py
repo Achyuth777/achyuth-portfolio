@@ -39,3 +39,12 @@ assert initial['gzip']<100_000,sizes
 assert three['gzip']<180_000,sizes
 print('PASS: 9 prerendered routes, original anchors, unique IDs, H1 structure, internal links, asset references, form labels and JS budgets.')
 print(json.dumps(sizes,indent=2))
+
+# Cinematic revision: verify the actual specified media and bundled font binaries.
+hero=(root/'index.html').read_text()
+assert 'hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4' in hero
+assert '<video' in hero and ('playsInline' in hero or 'playsinline' in hero)
+for weight in ['regular','bold']:
+ font=root/'assets'/f'au-grotesk-{weight}.woff2'
+ assert font.read_bytes()[:4]==b'wOF2',font
+print('PASS: specified hero film and both real WOFF2 font files.')

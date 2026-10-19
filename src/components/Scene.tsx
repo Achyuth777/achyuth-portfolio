@@ -1,5 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-export default function Scene({ variant = "gate" }: { variant?: string }) {
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+export default function Scene({
+  variant = "gate",
+  zoom = 1,
+}: {
+  variant?: string;
+  zoom?: number;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -22,6 +28,11 @@ export default function Scene({ variant = "gate" }: { variant?: string }) {
       { rootMargin: "100px" },
     );
     observer.observe(el);
+    useEffect(() => {
+      root.current?.dispatchEvent(
+        new CustomEvent("scene-zoom", { detail: zoom }),
+      );
+    }, [zoom]);
     return () => {
       alive = false;
       observer.disconnect();
@@ -32,6 +43,8 @@ export default function Scene({ variant = "gate" }: { variant?: string }) {
     <div
       className={"scene " + (ready ? "scene-ready" : "")}
       ref={root}
+      data-zoom={zoom}
+      style={{ "--scene-zoom": zoom } as CSSProperties}
       aria-hidden="true"
     >
       <svg className="scene-fallback" viewBox="0 0 800 640">
@@ -48,20 +61,44 @@ export default function Scene({ variant = "gate" }: { variant?: string }) {
           ry="300"
           fill={"url(#halo-" + variant + ")"}
         />
-        <g fill="none" stroke="#e8ab77" strokeWidth="1">
-          {[0, 1, 2, 3, 4, 5].map((i) => (
-            <path
-              key={i}
-              opacity={1 - i * 0.13}
-              d={`M${170 + i * 28} 510 V${100 + i * 24} H${630 - i * 28} V510`}
-            />
-          ))}
-          <path
-            d="M60 540H740M100 570H700M140 600H660M170 510L60 640M630 510L740 640"
-            opacity=".35"
-          />
-          <circle cx="400" cy="305" r="66" />
-          <path d="M400 237L465 305L400 373L335 305Z" />
+        <g fill="none" stroke="#b99a79" strokeWidth="2">
+          {variant === "network" || variant === "gate" ? (
+            <g transform="translate(400 320) rotate(-30)">
+              {[0, Math.PI].map((phase) => (
+                <path
+                  key={phase}
+                  d={Array.from({ length: 101 }, (_, i) => {
+                    const t = i / 100;
+                    return `${i ? "L" : "M"}${Math.cos(t * Math.PI * 5 + phase) * 70} ${(t - 0.5) * 460}`;
+                  }).join(" ")}
+                  strokeWidth="8"
+                />
+              ))}
+              {Array.from({ length: 24 }, (_, i) => {
+                const t = i / 23,
+                  x = Math.cos(t * Math.PI * 5) * 70,
+                  y = (t - 0.5) * 460;
+                return (
+                  <path key={i} d={`M${x} ${y}L${-x} ${y}`} stroke="#e98a45" />
+                );
+              })}
+            </g>
+          ) : (
+            <g transform="translate(400 310)">
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <ellipse
+                  key={i}
+                  rx={variant === "ledger" ? 150 : 60 + i * 20}
+                  ry={variant === "ledger" ? 75 : 50 + i * 12}
+                  cy={variant === "ledger" ? (i - 2.5) * 25 : 0}
+                  transform={
+                    variant === "ledger" ? "rotate(-25)" : `rotate(${i * 25})`
+                  }
+                  strokeWidth="5"
+                />
+              ))}
+            </g>
+          )}
         </g>
       </svg>
       <span className="scene-coordinate">
