@@ -1,6 +1,6 @@
 # Achyuth PV / Cyber Ronin 2.0
 
-A complete React + TypeScript portfolio with nine prerendered pages, a cinematic helmet-film hero and original metallic Three.js studies, project case studies and interactive explanatory models. Personal identity: **Achyuth PV · B.Tech IT · SRMIST Ramapuram · IT-A**.
+A complete React + TypeScript portfolio with nine prerendered pages, the original orange Cyber Ronin hero and interactive Three.js project installations, project case studies and interactive explanatory models. Personal identity: **Achyuth PV · B.Tech IT · SRMIST Ramapuram · IT-A**.
 
 ## Run and build
 
@@ -26,9 +26,9 @@ npm run preview
 
 | Route | Experience |
 |---|---|
-| `/` | Exact supplied helmet film, cinematic typography, selected work and original section anchors |
+| `/` | Original Ronin image pair, cursor spotlight, project installation and original section anchors |
 | `/about` | Personal story, identity card and interest explorer |
-| `/projects` | Filterable project index with original visual studies |
+| `/projects` | Interactive project installation plus the retained filterable project index |
 | `/projects/supplylens` | Supply-chain case study and inventory runway model |
 | `/projects/treasuryflow` | Payment workflow case study and approval walkthrough |
 | `/projects/argus-ai` | Risk case study and stress/repayment model |
@@ -61,7 +61,7 @@ The repository now includes `vercel.json` declaring Vite, `npm ci`, `npm run bui
 
 Read the [25-portfolio comparison](docs/RESEARCH.md), [audit and design decisions](docs/AUDIT.md), [component research](docs/COMPONENT-RESEARCH.md), and [verification report](docs/VERIFICATION.md).
 
-Signature systems connect the site: cinematic ronin film, mission index navigation, expanding project inspector with 1×–2× camera zoom, project labs, capability constellation, and closing signal composer. Decorative art is original code, not fabricated product screenshots. Fonts are bundled locally. The technical demonstrations are explicitly simplified educational models, not live integrations.
+Signature systems connect the site: Ronin reality-shift hero, mission index navigation, expanding project inspector with 1×–2× camera zoom, project labs, capability constellation, and closing signal composer. Decorative art is original code, not fabricated product screenshots. Orbitron-Medium and Inter load from the original external font providers, with system fallbacks. The technical demonstrations are explicitly simplified educational models, not live integrations.
 
 ## Important behavior and limitations
 
@@ -69,9 +69,12 @@ Signature systems connect the site: cinematic ronin film, mission index navigati
 - SupplyLens starts from synthetic data and its hosted workspace requires sign-in. TreasuryFlow demos do not move money. Argus AI uses demo positions and simulated protection.
 - No internships, dates, testimonials, metrics or proficiency percentages were invented. Existing self-reported achievements are retained with their provenance.
 - Content and normal links remain readable without JavaScript. Interactive controls require JavaScript; a no-script navigation is provided.
-- Browser rendering, real device interaction, screen-reader behavior, Core Web Vitals and Lighthouse still require review. Do not represent the static checks as browser or accessibility certification.
+- Desktop and small-frame browser checks cover navigation, fallback rendering and key project controls. Real-device GPU rendering, screen-reader behavior, Core Web Vitals and Lighthouse still require review. No accessibility certification or performance score is claimed.
 
-## Cinematic refinement
-The hero uses the exact user-supplied CloudFront MP4 (approximately 5.65 MB), not an image substitution. Video pauses out of view, in hidden tabs and for reduced-motion preferences, and has a manual pause/play control. Its availability depends on that external asset. TeX Gyre Heros regular/bold are bundled as renamed Latin subsets, AU Grotesk; attribution and license are in public/assets. The Atelier reference is adapted to Achyuth’s full portfolio, not published as a fictional studio or a one-section replacement.
+## Ronin restoration and project installations
 
-Project artwork opens a native dialog that expands from the selected card and contracts back. The inspector offers zoom out, reset, zoom in, full case study and demo links. Pointer/focus previews load actual Three.js scenes; static SVG artwork remains without WebGL. Metallic network, ledger and optical-risk studies use environmental reflections and amber detail, with explicit GPU cleanup.
+The original orange/cream image pair, Orbitron headings, Inter supporting text and cursor spotlight replace the superseded Atelier film composition. A keyboard/touch-friendly “Shift reality” button reveals the complete alternate scene. All nine routes, project records, links and interactive case-study models remain.
+
+`RoninHero.tsx` owns the restored hero; `ProjectOverview.tsx` provides the shared home/projects installation with project selection, unseal slider, close-up camera and direct case-study/demo links. `ronin.css` replaces the old cinematic stylesheet. The Vimeo reference ([Bruma Parfum](https://vimeo.com/1016048320)) informed warm lighting, textured surroundings and close-up product framing. Its footage, perfume bottle and proprietary assets are not embedded or copied.
+
+Three.js renders original metal/amber network, ledger and optical-risk cores surrounded by displaced, faceted shells. Unsealing separates the surrounding pieces; camera zoom and pointer response provide inspection. The native-dialog inspector uses the same installation. WebGL is lazy, capped at 1–1.5 DPR, renders on demand, pauses when hidden and disposes resources. Lightweight project cards no longer create a renderer on every hover. An illustrated, zoomable fallback remains when WebGL is unavailable.

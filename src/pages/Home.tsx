@@ -1,10 +1,10 @@
-import { projects } from "../data";
-import { Button, Label, ProjectCard } from "../components/UI";
-import CinematicHero from "../components/CinematicHero";
+import { Button, Label } from "../components/UI";
+import RoninHero from "../components/RoninHero";
+import ProjectOverview from "../components/ProjectOverview";
 export default function Home() {
   return (
     <>
-      <CinematicHero />
+      <RoninHero />
       <div className="identity-strip">
         <span>FULL-STACK DEVELOPMENT</span>
         <span>AI & INTELLIGENCE</span>
@@ -26,10 +26,9 @@ export default function Home() {
             clearly, move safely and make better decisions.
           </p>
         </div>
-        <div className="project-grid">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} />
-          ))}
+        <ProjectOverview />
+        <div className="archive-link">
+          <Button href="/projects">Browse the full project archive</Button>
         </div>
       </section>
       <section id="about" className="section manifesto">

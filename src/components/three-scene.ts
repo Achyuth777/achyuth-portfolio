@@ -4,18 +4,23 @@ export function mountScene(
   root: HTMLElement,
   variant: string,
   onReady: () => void,
+  installation = false,
 ) {
   let renderer: THREE.WebGLRenderer;
+  const canvas = document.createElement("canvas");
+  const attributes = {
+    alpha: true,
+    antialias: true,
+    powerPreference: "low-power" as const,
+  };
   try {
-    renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "low-power",
-    });
+    const context = canvas.getContext("webgl2", attributes) as WebGL2RenderingContext | null;
+    if (!context) return () => {};
+
+    renderer = new THREE.WebGLRenderer({ canvas, context, ...attributes });
   } catch {
     return () => {};
   }
-  const canvas = renderer.domElement;
   canvas.setAttribute("aria-hidden", "true");
   root.appendChild(canvas);
   const scene = new THREE.Scene();
@@ -204,6 +209,87 @@ export function mountScene(
       group.add(node);
     }
   }
+  // The installation surrounds the technical core with fractured, machined shells.
+  // Geometry and material are original; the reference informs warm light and macro framing.
+  const fragments: {
+    mesh: THREE.Mesh;
+    closed: THREE.Vector3;
+    open: THREE.Vector3;
+    angle: number;
+  }[] = [];
+  let shellMaterial: THREE.MeshStandardMaterial | undefined;
+  let plinthMaterial: THREE.MeshStandardMaterial | undefined;
+  if (installation) {
+    group.scale.setScalar(0.76);
+    shellMaterial = new THREE.MeshStandardMaterial({
+      color: 0x6e3016,
+      metalness: 0.38,
+      roughness: 0.8,
+    });
+    // Deterministic vertex displacement creates real relief without a texture download.
+    const rock = new THREE.IcosahedronGeometry(1, 3);
+    const pos = rock.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i),
+        y = pos.getY(i),
+        z = pos.getZ(i);
+      const n =
+        1 +
+        0.065 * Math.sin(x * 29 + y * 17) * Math.cos(z * 23 - x * 11) +
+        0.025 * Math.sin(y * 71 + z * 37);
+      pos.setXYZ(i, x * n, y * n, z * n);
+    }
+    rock.computeVertexNormals();
+    for (let i = 0; i < 9; i++) {
+      const a = (i * Math.PI * 2) / 9;
+      const mesh = new THREE.Mesh(rock, shellMaterial);
+      mesh.scale.set(0.65 + (i % 3) * 0.16, 0.85 + (i % 2) * 0.2, 0.48);
+      mesh.rotation.set(i * 0.42, i * 0.7, a * 0.4);
+      const closed = new THREE.Vector3(
+        Math.cos(a) * 1.6,
+        Math.sin(a) * 1.8,
+        0.35 + Math.sin(i * 2) * 0.3,
+      );
+      const open = new THREE.Vector3(
+        Math.cos(a) * 2.85,
+        Math.sin(a) * 2.5 - 0.15,
+        -0.6 + Math.sin(i) * 0.4,
+      );
+      mesh.position.copy(closed);
+      scene.add(mesh);
+      fragments.push({ mesh, closed, open, angle: mesh.rotation.z });
+    }
+    plinthMaterial = new THREE.MeshStandardMaterial({
+      color: 0x29170d,
+      metalness: 0.55,
+      roughness: 0.42,
+    });
+    const base = new THREE.Mesh(
+      new THREE.CylinderGeometry(2.5, 2.7, 0.17, 72),
+      plinthMaterial,
+    );
+    base.position.y = -2.45;
+    scene.add(base);
+    const rim = new THREE.Mesh(
+      new THREE.TorusGeometry(2.46, 0.015, 6, 100),
+      warm,
+    );
+    rim.rotation.x = Math.PI / 2;
+    rim.position.y = -2.35;
+    scene.add(rim);
+    const grooves = new THREE.Group();
+    for (let i = 0; i < 36; i++) {
+      const a = (i * Math.PI * 2) / 36;
+      const tick = new THREE.Mesh(
+        new THREE.BoxGeometry(0.014, 0.012, i % 3 === 0 ? 0.16 : 0.08),
+        silver,
+      );
+      tick.position.set(Math.sin(a) * 2.25, -2.35, Math.cos(a) * 2.25);
+      tick.rotation.y = a;
+      grooves.add(tick);
+    }
+    scene.add(grooves);
+  }
   const baseRotation = group.rotation.clone();
   const hemisphere = new THREE.HemisphereLight(0xffe8cd, 0x11100d, 1.4);
   scene.add(hemisphere);
@@ -218,6 +304,8 @@ export function mountScene(
   scene.add(amber);
   camera.position.set(0, 1, 8.4);
   camera.lookAt(0, 0, 0);
+  let targetReveal = Number(root.dataset.reveal) || 0,
+    currentReveal = targetReveal;
   let targetZoom = Number(root.dataset.zoom) || 1,
     currentZoom = targetZoom;
   let raf = 0,
@@ -233,14 +321,25 @@ export function mountScene(
     group.rotation.y += (baseRotation.y + targetX - group.rotation.y) * 0.065;
     group.rotation.x += (baseRotation.x + targetY - group.rotation.x) * 0.065;
     currentZoom += (targetZoom - currentZoom) * (reduced ? 1 : 0.09);
-    camera.position.z = 8.4 / currentZoom;
+    currentReveal += (targetReveal - currentReveal) * (reduced ? 1 : 0.065);
+    const eased = currentReveal * currentReveal * (3 - 2 * currentReveal);
+    for (const f of fragments) {
+      f.mesh.position.lerpVectors(f.closed, f.open, eased);
+      f.mesh.rotation.z = f.angle + eased * 0.45;
+    }
+    // Portrait stages keep the entire artifact visible; close-ups remain explicit.
+    const fit = camera.aspect < 1 ? 1 / Math.max(0.58, camera.aspect) : 1;
+    camera.position.z = ((installation ? 10.4 : 8.4) * fit) / currentZoom;
+    camera.position.x = installation ? targetX * 0.9 : 0;
+    camera.lookAt(0, installation ? -0.2 : 0, 0);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
     if (
       !reduced &&
       (Math.abs(baseRotation.y + targetX - group.rotation.y) > 0.0001 ||
         Math.abs(baseRotation.x + targetY - group.rotation.x) > 0.0001 ||
-        Math.abs(targetZoom - currentZoom) > 0.001)
+        Math.abs(targetZoom - currentZoom) > 0.001 ||
+        Math.abs(targetReveal - currentReveal) > 0.001)
     )
       raf = requestAnimationFrame(render);
   };
@@ -255,6 +354,14 @@ export function mountScene(
     wake();
   };
   root.addEventListener("scene-zoom", zoom);
+  const reveal = (event: Event) => {
+    targetReveal = Math.max(
+      0,
+      Math.min(1, (event as CustomEvent<number>).detail),
+    );
+    wake();
+  };
+  root.addEventListener("scene-reveal", reveal);
   const resize = () => {
     const r = root.getBoundingClientRect();
     renderer.setSize(r.width, r.height);
@@ -327,13 +434,17 @@ export function mountScene(
       }
     });
     root.removeEventListener("scene-zoom", zoom);
+    root.removeEventListener("scene-reveal", reveal);
     environment.dispose();
     warm.dispose();
     silver.dispose();
     metal.dispose();
 
     edge.dispose();
+    shellMaterial?.dispose();
+    plinthMaterial?.dispose();
     renderer.dispose();
+    renderer.forceContextLoss();
     canvas.remove();
   };
 }

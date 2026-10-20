@@ -1,2 +1,5 @@
 import { defineConfig } from "vite";
-export default defineConfig({ build: { emptyOutDir: true, target: "es2022" } });
+export default defineConfig({
+  server: { allowedHosts: ["terminal.local"] },
+  build: { emptyOutDir: true, target: "es2022" },
+});

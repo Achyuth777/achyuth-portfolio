@@ -5,6 +5,7 @@ type Origin = { x: number; y: number; width: number; height: number };
 export default function ProjectInspector() {
   const [project, setProject] = useState<Project | null>(null);
   const [zoom, setZoom] = useState(1);
+  const [reveal, setReveal] = useState(0);
   const [closing, setClosing] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ export default function ProjectInspector() {
       source.current = e.detail.trigger;
       origin.current = e.detail.rect;
       setZoom(1);
+      setReveal(0);
       setProject(p);
     };
     const dismiss = () => {
@@ -134,9 +136,16 @@ export default function ProjectInspector() {
                       : "risk"
                 }
                 zoom={zoom}
+                installation
+                reveal={reveal}
               />
               <div className="inspection-tools">
-                <span>OBJECT STUDY · {zoom.toFixed(2)}×</span>
+                <button
+                  aria-pressed={reveal > 0.5}
+                  onClick={() => setReveal((v) => (v > 0.5 ? 0 : 1))}
+                >
+                  {reveal > 0.5 ? "Close core −" : "Unseal core ＋"}
+                </button>
                 <div>
                   <button
                     aria-label="Zoom out"
@@ -158,8 +167,8 @@ export default function ProjectInspector() {
                 </div>
               </div>
               <small>
-                Move your pointer to explore the sculpture. Use + / − to inspect
-                its structure.
+                Move to orbit the sculpture. Unseal the core or use + / − to
+                inspect its structure.
               </small>
             </div>
             <div className="inspection-copy">

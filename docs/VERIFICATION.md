@@ -1,3 +1,17 @@
+# Ronin restoration — current verification (2026-10-20)
+
+- Restored original Ronin image pair, Orbitron/Inter typography, orange/cream palette, cursor spotlight and touch/keyboard reality toggle. Replaced the Atelier hero component and stylesheet rather than keeping duplicate versions.
+- Project data (`src/data.ts`), all nine routes, About/Skills/Experience/Contact content, case studies and demos are unchanged. The overview and inspector add original 3D shell separation and close-up controls.
+- Production build, source-wide Rules of Hooks, TypeScript, three model tests and static route/link/markup/budget checks pass. Initial JS is approximately 91.0 KB gzip; deferred WebGL bundle 129.2 KB gzip; CSS 11.0 KB gzip (Vite estimates). The lazy chunk still receives Vite's raw 500 KB advisory; its compressed size stays below the existing 180 KB budget. These are bundle measurements, not Lighthouse or Core Web Vitals scores.
+- Browser observations: original hero artwork and fonts load; scrolling into projects remains usable; selecting TreasuryFlow/Argus updates content and links; unseal controls and range keyboard End work; case-study navigation, inspector zoom/unseal and Escape dismissal work. Verified 390px hero composition and 320px home/contact layout. Fixed narrow typography overflow on journey and architecture sections; rechecked journey and the shared case-study layout at 305px usable width with scrollWidth equal to clientWidth. Projects fits the 768px frame as well. These are browser frames, not physical-device tests.
+- Important limit: the cloud browser reports WebGL disabled. The illustrated fallback was visually checked and stays functional; actual GPU materials, lighting, frame timing and context recovery still need a WebGL-capable device review. Native iOS/touch behavior, screen readers and reduced-motion preference switching have not been empirically tested. No visual score is claimed.
+- Vimeo opened and played in the browser. Observed warm amber surroundings, textured sculptural forms and a close-up product reveal; translated that direction into original code rather than reusing its footage or asserting pixel-identical motion.
+- External font/image hosts remain dependencies. The older supplied film is no longer requested. Temporary responsive test harness is removed before delivery.
+
+The reports below describe previous iterations and are retained as historical records.
+
+---
+
 # Cinematic refinement — current verification
 
 The original report below records the first V2 iteration. This revision replaces the abstract home gateway with the exact supplied helmet MP4, the typography with two locally bundled AU Grotesk (TeX Gyre Heros) Latin subsets, and basic 3D geometry with metallic network, ledger and risk studies. It adds a native-dialog project inspector with card-to-panel expansion/contraction and 1×–2× camera zoom.

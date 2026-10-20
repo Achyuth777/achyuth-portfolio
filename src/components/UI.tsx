@@ -1,7 +1,6 @@
-import { useState, type ReactNode, type CSSProperties } from "react";
+import { type ReactNode, type CSSProperties } from "react";
 import { type Project } from "../data";
 import Magnet from "../vendor/Magnet";
-import Scene from "./Scene";
 import { useReducedMotion } from "./useReducedMotion";
 export const Arrow = () => <span aria-hidden="true">↗</span>;
 export function Button({
@@ -160,27 +159,20 @@ export function ProjectCard({
   p: Project;
   wide?: boolean;
 }) {
-  const [preview, setPreview] = useState(false);
   return (
     <article
       className={"project-card " + (wide ? "wide" : "")}
       style={{ "--project": p.color } as CSSProperties}
     >
       <a
-        className={"art-link " + (preview ? "preview-live" : "")}
-        onPointerEnter={(e) => {
-          if (e.pointerType === "mouse") setPreview(true);
-        }}
-        onPointerLeave={() => setPreview(false)}
-        onFocus={() => setPreview(true)}
-        onBlur={() => setPreview(false)}
+        className="art-link"
         href={"/projects/" + p.slug}
         aria-label={"Inspect " + p.name}
+        aria-haspopup="dialog"
         onClick={(e) => {
           if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
           e.stopPropagation();
-          setPreview(false);
           const r = e.currentTarget.getBoundingClientRect();
           window.dispatchEvent(
             new CustomEvent("inspect-project", {
@@ -194,19 +186,6 @@ export function ProjectCard({
         }}
       >
         <Art kind={p.slug} />
-        {preview && (
-          <div className="card-live-scene">
-            <Scene
-              variant={
-                p.slug === "supplylens"
-                  ? "network"
-                  : p.slug === "treasuryflow"
-                    ? "ledger"
-                    : "risk"
-              }
-            />
-          </div>
-        )}
         <span className="portal-arrow">＋</span>
         <span className="inspect-hint">CLICK TO INSPECT</span>
         <span className="project-num">/{p.number}</span>

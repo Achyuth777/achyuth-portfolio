@@ -40,11 +40,12 @@ assert three['gzip']<180_000,sizes
 print('PASS: 9 prerendered routes, original anchors, unique IDs, H1 structure, internal links, asset references, form labels and JS budgets.')
 print(json.dumps(sizes,indent=2))
 
-# Cinematic revision: verify the actual specified media and bundled font binaries.
+# Ronin restoration: preserve the original image pair and font, not the superseded film.
 hero=(root/'index.html').read_text()
-assert 'hf_20261005_143740_52dbf3ef-ea20-4594-a1ad-91d6c2970159.mp4' in hero
-assert '<video' in hero and ('playsInline' in hero or 'playsinline' in hero)
-for weight in ['regular','bold']:
- font=root/'assets'/f'au-grotesk-{weight}.woff2'
- assert font.read_bytes()[:4]==b'wOF2',font
-print('PASS: specified hero film and both real WOFF2 font files.')
+assert 'hf_20260831_115955_2a9adb39-5e9b-4ced-96e2-6900eabe3de9' in hero
+assert 'hf_20260831_123709_183f0065-efb2-4bb2-a849-13aaa5af2f3f' in hero
+assert 'Orbitron-Medium' in hero
+assert 'Interactive project overview' in hero
+assert 'Unseal sculpture' in hero
+assert 'hf_20261005_143740' not in hero
+print('PASS: original Ronin artwork, typography, accessible project controls and no superseded film.')

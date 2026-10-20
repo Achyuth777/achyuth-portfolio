@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { projects } from "../data";
 import { Heading, ProjectCard, Next } from "../components/UI";
+import ProjectOverview from "../components/ProjectOverview";
 export default function Projects() {
   const [filter, setFilter] = useState("All");
   return (
@@ -10,6 +11,7 @@ export default function Projects() {
         title="A collection of considered experiments."
         copy="From connected inventories to programmable payments and modeled risk. Explore the thinking, architecture and boundaries behind each build."
       />
+      <ProjectOverview />
       <div className="filter-row" aria-label="Filter projects">
         {["All", "Product systems", "Fintech", "AI / Web3"].map((x) => (
           <button

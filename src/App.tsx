@@ -149,9 +149,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header
-        className={"site-header " + (path === "/" ? "cinema-header" : "")}
-      >
+      <header className={"site-header " + (path === "/" ? "ronin-header" : "")}>
         <a className="brand" href="/" aria-label="Achyuth PV home">
           <svg width="27" height="29" viewBox="0 0 27 29" aria-hidden="true">
             <path

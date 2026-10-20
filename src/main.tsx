@@ -1,8 +1,8 @@
-import { hydrateRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App";
 import "./style.css";
-import "./cinema.css";
-hydrateRoot(
-  document.getElementById("root")!,
-  <App initialPath={location.pathname.replace(/\/$/, "") || "/"} />,
-);
+import "./ronin.css";
+const root = document.getElementById("root")!;
+const app = <App initialPath={location.pathname.replace(/\/$/, "") || "/"} />;
+if (root.children.length) hydrateRoot(root, app);
+else createRoot(root).render(app);

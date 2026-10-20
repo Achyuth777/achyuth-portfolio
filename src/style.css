@@ -6,7 +6,7 @@
   --accent: #e89b68;
   --line: #ede8dc26;
   --project: var(--accent);
-  font-family: "AU Grotesk", system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   color: var(--ink);
   background: var(--bg);
   font-synthesis: none;
@@ -82,7 +82,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: "AU Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.055em;
@@ -159,7 +159,7 @@ main:focus {
   align-items: center;
   gap: 13px;
   font:
-    500 13px/1.5 "AU Grotesk",
+    500 13px/1.5 "Inter",
     sans-serif;
   letter-spacing: 0.02em;
 }
@@ -422,19 +422,19 @@ main:focus {
   gap: 42px;
 }
 .manifesto {
-  background: #e7e4d8;
-  color: #232720;
+  background: #fbdbaf;
+  color: #2c2117;
   padding-block: 110px;
 }
 .manifesto .label {
-  color: #616759;
+  color: #9d805f;
 }
 .manifesto h2 {
   font-size: clamp(42px, 6.8vw, 102px);
   margin-top: 34px;
 }
 .manifesto em {
-  color: #777e63;
+  color: #a17f58;
 }
 .manifesto-bottom {
   display: grid;
@@ -443,34 +443,34 @@ main:focus {
   gap: 80px;
 }
 .manifesto-bottom p {
-  color: #555d4c;
+  color: #766047;
   font-size: 16px;
   max-width: 530px;
   margin-bottom: 28px;
 }
 .manifesto .button {
-  border-color: #23272077;
+  border-color: #2c211777;
 }
 .manifesto .button:hover {
-  background: #232720;
-  color: #e7e4d8;
+  background: #2c2117;
+  color: #fbdbaf;
 }
 .seal {
   width: 110px;
   height: 110px;
-  border: 1px solid #777e6370;
+  border: 1px solid #a17f5870;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   transform: rotate(-12deg);
-  font-family: "AU Grotesk";
+  font-family: "Inter";
   font-size: 32px;
 }
 .seal small {
   font: 8px monospace;
-  color: #555d4c;
+  color: #766047;
 }
 .compact-section {
   display: grid;
@@ -487,7 +487,7 @@ main:focus {
 }
 .home-journey {
   border-block: 1px solid var(--line);
-  background: linear-gradient(135deg, #1b211a, transparent);
+  background: linear-gradient(135deg, #21170f, transparent);
 }
 .home-journey h2 {
   margin: 30px 0 40px;
@@ -528,7 +528,7 @@ main:focus {
   gap: 24px;
 }
 .footer-brand {
-  font: 20px "AU Grotesk";
+  font: 20px "Inter";
   color: var(--ink);
 }
 .page {
@@ -565,15 +565,15 @@ main:focus {
 }
 .identity-card {
   padding: 30px;
-  background: #20251f;
+  background: #2b1c10;
   border: 1px solid #a9bca638;
   position: relative;
 }
 .identity-monogram {
-  font: clamp(80px, 14vw, 210px)/1 "AU Grotesk";
+  font: clamp(80px, 14vw, 210px)/1 "Inter";
   letter-spacing: -0.11em;
   padding: 40px 0 60px;
-  color: #c0c8b0;
+  color: #d6b78f;
   position: relative;
 }
 .identity-monogram span {
@@ -600,9 +600,9 @@ main:focus {
   width: 110px;
   background: repeating-linear-gradient(
     90deg,
-    #c0c8b0 0 1px,
+    #d6b78f 0 1px,
     transparent 1px 4px,
-    #c0c8b0 4px 7px,
+    #d6b78f 4px 7px,
     transparent 7px 9px
   );
   margin-bottom: 20px;
@@ -637,7 +637,7 @@ main:focus {
   border-top: 1px solid var(--line);
   padding: 25px 0;
   text-align: left;
-  font: 24px "AU Grotesk";
+  font: 24px "Inter";
 }
 .interest-tabs button > span:first-child {
   font: 10px monospace;
@@ -659,7 +659,7 @@ main:focus {
   position: absolute;
   top: 5px;
   right: 25px;
-  font: 100px/1 "AU Grotesk";
+  font: 100px/1 "Inter";
   opacity: 0.08;
 }
 .interest-panel h3 {
@@ -772,7 +772,7 @@ main:focus {
   color: var(--project);
 }
 .case-tagline {
-  font: clamp(23px, 2.8vw, 42px)/1.2 "AU Grotesk";
+  font: clamp(23px, 2.8vw, 42px)/1.2 "Inter";
   color: var(--ink);
   letter-spacing: -0.04em;
 }
@@ -800,7 +800,7 @@ main:focus {
       color-mix(in srgb, var(--project) 10%, transparent),
       transparent 65%
     ),
-    #171b17;
+    #1d150e;
   border: 1px solid var(--line);
   padding-left: 4vw;
   overflow: hidden;
@@ -849,7 +849,7 @@ main:focus {
 }
 .lab {
   padding: 32px;
-  background: #1b1f1c;
+  background: #21170f;
   border: 1px solid color-mix(in srgb, var(--project) 25%, transparent);
   color: var(--project);
 }
@@ -864,7 +864,7 @@ main:focus {
   margin: 30px 0;
 }
 .lab-reading strong {
-  font: 72px/1 "AU Grotesk";
+  font: 72px/1 "Inter";
   letter-spacing: -0.06em;
 }
 .lab-reading span {
@@ -1008,12 +1008,12 @@ main:focus {
   margin-left: auto;
 }
 .architecture li div {
-  font: 19px "AU Grotesk";
+  font: 19px "Inter";
 }
 .architecture small {
   display: block;
   margin-top: 8px;
-  font: 11px "AU Grotesk";
+  font: 11px "Inter";
   color: var(--muted);
 }
 .feature-section {
@@ -1028,7 +1028,7 @@ main:focus {
 .feature.card-spotlight,
 .feature {
   border-radius: 0 !important;
-  background: #171b17 !important;
+  background: #1d150e !important;
   padding: 35px !important;
   min-height: 190px;
 }
@@ -1054,7 +1054,7 @@ main:focus {
 }
 .boundary {
   border-left: 2px solid var(--project);
-  background: #1a1d19;
+  background: #20160e;
   padding: 24px 28px;
   color: var(--muted);
   font-size: 12px;
@@ -1088,7 +1088,7 @@ main:focus {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font: 48px "AU Grotesk";
+  font: 48px "Inter";
   text-align: center;
   pointer-events: none;
 }
@@ -1100,7 +1100,7 @@ main:focus {
 }
 .universe-node {
   position: absolute;
-  background: #171c17e8;
+  background: #1d140ee8;
   border: 1px solid var(--line);
   padding: 13px 16px;
   font-size: 11px;
@@ -1140,7 +1140,7 @@ main:focus {
 .capability-panel {
   padding: 45px 35px;
   border-left: 1px solid var(--line);
-  background: #191e19;
+  background: #20160e;
 }
 .capability-panel h2 {
   font-size: 40px;
@@ -1182,7 +1182,7 @@ main:focus {
   gap: 10vw;
 }
 .journey-mark {
-  font: 120px/1 "AU Grotesk";
+  font: 120px/1 "Inter";
   color: var(--accent);
   margin-bottom: 30px;
 }
@@ -1270,7 +1270,7 @@ main:focus {
   margin-bottom: 30px;
 }
 .contact-email {
-  font: clamp(16px, 1.8vw, 27px) "AU Grotesk";
+  font: clamp(16px, 1.8vw, 27px) "Inter";
   color: var(--ink);
   display: block;
   margin: 23px 0;
@@ -1290,7 +1290,7 @@ main:focus {
   stroke-dashoffset: 0;
 }
 .contact-form {
-  background: #1b1e19;
+  background: #21170f;
   border: 1px solid var(--line);
   padding: 35px;
 }
@@ -1323,7 +1323,7 @@ main:focus {
 }
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: #858c7e;
+  color: #b49b7d;
 }
 .contact-form small {
   display: block;
@@ -1358,11 +1358,11 @@ main:focus {
   max-height: 90dvh;
   border: 1px solid #ede8dc44;
   padding: 0;
-  background: #161a16;
+  background: #1b130e;
   color: var(--ink);
 }
 .command-menu::backdrop {
-  background: #060a08dc;
+  background: #0c0906dc;
   backdrop-filter: blur(12px);
 }
 .command-inner {
@@ -1398,7 +1398,7 @@ main:focus {
 .command-menu nav a {
   padding: 16px 0;
   border-bottom: 1px solid var(--line);
-  font: 22px "AU Grotesk";
+  font: 22px "Inter";
   display: flex;
   gap: 20px;
   align-items: center;
