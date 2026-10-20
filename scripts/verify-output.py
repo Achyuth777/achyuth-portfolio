@@ -34,9 +34,9 @@ for anchor in ['home','projects','about','skills','journey','contact']:assert an
 sizes={p.name:{'bytes':p.stat().st_size,'gzip':len(gzip.compress(p.read_bytes()))} for p in (root/'assets').glob('*.js')}
 assert len([k for k in sizes if k.startswith('index-')])==1, 'stale initial bundles'
 initial=next(v for k,v in sizes.items() if k.startswith('index-'))
-three=next(v for k,v in sizes.items() if k.startswith('three-scene-'))
+assert not any(k.startswith('three-scene-') for k in sizes), 'unexpected 3D runtime'
 assert initial['gzip']<100_000,sizes
-assert three['gzip']<180_000,sizes
+
 print('PASS: 9 prerendered routes, original anchors, unique IDs, H1 structure, internal links, asset references, form labels and JS budgets.')
 print(json.dumps(sizes,indent=2))
 
@@ -45,7 +45,10 @@ hero=(root/'index.html').read_text()
 assert 'hf_20260831_115955_2a9adb39-5e9b-4ced-96e2-6900eabe3de9' in hero
 assert 'hf_20260831_123709_183f0065-efb2-4bb2-a849-13aaa5af2f3f' in hero
 assert 'Orbitron-Medium' in hero
-assert 'Interactive project overview' in hero
-assert 'Unseal sculpture' in hero
+assert 'Project overview' in hero
+assert 'Unseal sculpture' not in hero
+assert '/previews/supplylens.webp' in hero
+assert 'DEVELOPER UNIVERSE' not in (root/'skills/index.html').read_text()
+for slug in ['supplylens','treasuryflow','argus-ai']: assert (root/'previews'/f'{slug}.webp').exists()
 assert 'hf_20261005_143740' not in hero
 print('PASS: original Ronin artwork, typography, accessible project controls and no superseded film.')

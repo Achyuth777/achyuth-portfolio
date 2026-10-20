@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { projects, type Project } from "../data";
-import Scene from "./Scene";
+import ProjectPreview from "./ProjectPreview";
 type Origin = { x: number; y: number; width: number; height: number };
 export default function ProjectInspector() {
   const [project, setProject] = useState<Project | null>(null);
-  const [zoom, setZoom] = useState(1);
-  const [reveal, setReveal] = useState(0);
   const [closing, setClosing] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const panel = useRef<HTMLDivElement>(null);
@@ -25,8 +23,6 @@ export default function ProjectInspector() {
       if (!p) return;
       source.current = e.detail.trigger;
       origin.current = e.detail.rect;
-      setZoom(1);
-      setReveal(0);
       setProject(p);
     };
     const dismiss = () => {
@@ -127,49 +123,7 @@ export default function ProjectInspector() {
           </div>
           <div className="inspection-layout">
             <div className="inspection-viewport">
-              <Scene
-                variant={
-                  project.slug === "supplylens"
-                    ? "network"
-                    : project.slug === "treasuryflow"
-                      ? "ledger"
-                      : "risk"
-                }
-                zoom={zoom}
-                installation
-                reveal={reveal}
-              />
-              <div className="inspection-tools">
-                <button
-                  aria-pressed={reveal > 0.5}
-                  onClick={() => setReveal((v) => (v > 0.5 ? 0 : 1))}
-                >
-                  {reveal > 0.5 ? "Close core −" : "Unseal core ＋"}
-                </button>
-                <div>
-                  <button
-                    aria-label="Zoom out"
-                    disabled={zoom <= 1}
-                    onClick={() => setZoom((v) => Math.max(1, v - 0.25))}
-                  >
-                    −
-                  </button>
-                  <button onClick={() => setZoom(1)} disabled={zoom === 1}>
-                    Reset
-                  </button>
-                  <button
-                    aria-label="Zoom in"
-                    disabled={zoom >= 2}
-                    onClick={() => setZoom((v) => Math.min(2, v + 0.25))}
-                  >
-                    ＋
-                  </button>
-                </div>
-              </div>
-              <small>
-                Move to orbit the sculpture. Unseal the core or use + / − to
-                inspect its structure.
-              </small>
+              <ProjectPreview slug={project.slug} name={project.name} />
             </div>
             <div className="inspection-copy">
               <span className="label">

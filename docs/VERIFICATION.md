@@ -1,3 +1,15 @@
+# Screenshot previews and readable capabilities — 2026-10-20
+
+Replaced project overview, cards, inspector and case-study artwork with the three user-supplied landing-page screenshots. Encoded as WebP (about 311 KB combined) and lazy loaded. TreasuryFlow taskbar is excluded by the display frame. No canvas remains in the rendered project overview; Three.js is no longer included in the production output. The original Ronin hero is retained.
+
+Capabilities uses a static responsive grid. SQL/PostgreSQL and MongoDB are included; MongoDB is presented as an additional backend tool, not attributed to a project. Stack updates were checked against Argus AI and TreasuryFlow repository package manifests and the existing SupplyLens checkout manifest. SDK presence does not imply live indexing or deployed settlement; project boundaries are retained.
+
+Browser QA: screenshot selector changes TreasuryFlow content and image, all preview images load, Argus inspector opens with its screenshot, desktop layout fits, Projects and Capabilities fit 305px usable width in 320px frames. No physical-device or screen-reader test claimed. Build/typecheck/hooks gate, model tests, static route/link/asset checks and diff whitespace checks pass. All nine routes and demo links remain.
+
+Earlier reports below describe superseded iterations.
+
+---
+
 # Ronin restoration — current verification (2026-10-20)
 
 - Restored original Ronin image pair, Orbitron/Inter typography, orange/cream palette, cursor spotlight and touch/keyboard reality toggle. Replaced the Atelier hero component and stylesheet rather than keeping duplicate versions.

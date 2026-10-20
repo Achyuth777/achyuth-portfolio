@@ -1,7 +1,7 @@
 import { type CSSProperties } from "react";
 import { projects, type Project } from "../data";
 import { Arrow, Button, Label, Next } from "../components/UI";
-import Scene from "../components/Scene";
+import ProjectPreview from "../components/ProjectPreview";
 import Lab from "../components/Labs";
 import SpotlightCard from "../vendor/SpotlightCard";
 import { useReducedMotion } from "../components/useReducedMotion";
@@ -59,15 +59,7 @@ export default function CaseStudy({ p }: { p: Project }) {
             )}
           </h2>
         </div>
-        <Scene
-          variant={
-            p.slug === "supplylens"
-              ? "network"
-              : p.slug === "treasuryflow"
-                ? "ledger"
-                : "risk"
-          }
-        />
+        <ProjectPreview slug={p.slug} name={p.name} />
       </div>
       <div className="case-intro">
         <Label>01 / THE QUESTION</Label>

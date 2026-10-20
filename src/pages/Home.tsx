@@ -67,7 +67,7 @@ export default function Home() {
             Interfaces, APIs, data and programmable value. Explore the
             technologies behind the work.
           </p>
-          <Button href="/skills">Enter the developer universe</Button>
+          <Button href="/skills">Explore my tech stack</Button>
         </div>
       </section>
       <section id="journey" className="section home-journey">

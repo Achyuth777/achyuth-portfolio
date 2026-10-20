@@ -1,92 +1,74 @@
-import { useState } from "react";
 import { projects } from "../data";
-import { Arrow, Label, Heading, Next } from "../components/UI";
-import Scene from "../components/Scene";
+import { Label, Heading, Next } from "../components/UI";
 const clusters = [
   {
-    name: "Interfaces",
-    tools: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-    copy: "Readable, responsive interfaces that make complex workflows approachable.",
-    slugs: ["supplylens", "treasuryflow", "argus-ai"],
+    name: "Frontend & interfaces",
+    tools: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Recharts"],
+    copy: "Responsive product interfaces, typed components and clear data visualizations.",
   },
   {
-    name: "Systems",
-    tools: ["Java", "Spring Boot", "PostgreSQL", "Zod"],
-    copy: "Explicit contracts, persisted state and reliable workflow boundaries.",
-    slugs: ["supplylens", "treasuryflow"],
+    name: "Backend & databases",
+    tools: [
+      "Java",
+      "Spring Boot",
+      "SQL",
+      "PostgreSQL",
+      "Cloudflare Workers",
+      "D1",
+      "Zod",
+    ],
+    copy: "APIs, validation, relational data and recoverable payment workflows.",
   },
   {
-    name: "Intelligence",
-    tools: ["Recharts", "Risk modeling", "Gemini API"],
-    copy: "Models and explanations that expose assumptions rather than hiding them.",
-    slugs: ["supplylens", "argus-ai"],
-  },
-  {
-    name: "Programmable value",
+    name: "Web3 & payments",
     tools: [
       "Solidity",
-      "Solana Wallet Adapter",
-      "Cloudflare Workers",
-      "D1 / R2",
+      "ethers.js",
+      "Ganache",
+      "Solana web3.js",
+      "Wallet Adapter",
+      "Kamino SDK",
     ],
-    copy: "Exploring settlement, wallet interfaces and hosted product infrastructure.",
-    slugs: ["treasuryflow", "argus-ai", "supplylens"],
+    copy: "Local settlement contracts, wallet connections and DeFi tooling.",
+  },
+  {
+    name: "AI & product intelligence",
+    tools: ["Google Gemini API", "Risk modeling", "Demand forecasting"],
+    copy: "Exploring practical models, transparent assumptions and useful explanations.",
   },
 ];
 export default function Skills() {
-  const [selected, setSelected] = useState(0);
-  const c = clusters[selected];
   return (
     <div className="page">
       <Heading
         index="03 / CAPABILITIES"
-        title="Tools connect. Possibilities multiply."
-        copy="A map of technologies used across my projects — without arbitrary proficiency scores. Select a capability to trace it back to the work."
+        title="The tools behind the work."
+        copy="A practical stack for building interfaces, connecting systems and working with data."
       />
-      <div className="universe">
-        <div className="universe-visual">
-          <Scene variant="network" />
-          <div className="universe-center">
-            APV<span>DEVELOPER UNIVERSE</span>
-          </div>
-          {clusters.map((x, i) => (
-            <button
-              className={"universe-node node-" + i}
-              key={x.name}
-              aria-pressed={selected === i}
-              onClick={() => setSelected(i)}
-            >
-              <span>0{i + 1}</span>
-              {x.name}
-            </button>
-          ))}
-        </div>
-        <div className="capability-panel" aria-live="polite">
-          <Label>CAPABILITY 0{selected + 1}</Label>
-          <h2>{c.name}</h2>
-          <p>{c.copy}</p>
-          <div className="tags">
-            {c.tools.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
-          </div>
-          <h3>Connected work</h3>
-          {projects
-            .filter((p) => c.slugs.includes(p.slug))
-            .map((p) => (
-              <a
-                className="capability-link"
-                key={p.slug}
-                href={"/projects/" + p.slug}
-              >
-                {p.name}
-                <Arrow />
-              </a>
-            ))}
-        </div>
+      <div className="capabilities-grid">
+        {clusters.map((c, i) => (
+          <section className="capability-card" key={c.name}>
+            <Label>0{i + 1} / CAPABILITY</Label>
+            <h2>{c.name}</h2>
+            <p>{c.copy}</p>
+            <ul className="tech-list">
+              {c.tools.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
+      <section className="backend-extra">
+        <Label>ADDITIONAL BACKEND TOOL</Label>
+        <h2>MongoDB</h2>
+        <p>
+          Document databases are also part of my backend toolkit, alongside SQL
+          and PostgreSQL.
+        </p>
+      </section>
       <section className="section skill-inventory">
-        <Label>THE STACK, IN CONTEXT</Label>
+        <Label>PROJECT STACKS</Label>
         {projects.map((p) => (
           <div key={p.slug}>
             <h3>
@@ -96,7 +78,7 @@ export default function Skills() {
           </div>
         ))}
       </section>
-      <Next href="/projects" label="See the systems in practice" />
+      <Next href="/projects" label="See the tools in practice" />
     </div>
   );
 }

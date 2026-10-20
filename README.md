@@ -1,3 +1,5 @@
+> Latest update: real landing-page screenshot previews replace 3D project displays. Capabilities is now a clean responsive technology grid, with larger body text and controls. Screenshots are provided by Achyuth and stored in `public/previews`. The production bundle no longer includes Three.js. Earlier design notes below document previous iterations.
+
 # Achyuth PV / Cyber Ronin 2.0
 
 A complete React + TypeScript portfolio with nine prerendered pages, the original orange Cyber Ronin hero and interactive Three.js project installations, project case studies and interactive explanatory models. Personal identity: **Achyuth PV · B.Tech IT · SRMIST Ramapuram · IT-A**.
