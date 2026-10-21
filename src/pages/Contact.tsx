@@ -19,8 +19,8 @@ export default function Contact() {
     <div className="page contact-page">
       <Heading
         index="05 / CONTACT"
-        title="Good things begin with a signal."
-        copy="A project idea, a collaboration, an opportunity — or just a good conversation. I’d love to hear what you’re thinking."
+        title="Say hello."
+        copy="If you’re working on something in fintech, Web3 or AI, I’d like to hear about it. You can also reach out about internships or my projects."
       />
       <div className="contact-layout">
         <div className={"signal-station " + (signal ? "signal-active" : "")}>
@@ -68,7 +68,7 @@ export default function Contact() {
             </a>
           </div>
           <p role="status" className="copy-status">
-            {status || "Have something in mind? Send a signal."}
+            {status || "Email is the easiest way to reach me."}
           </p>
         </div>
         <form

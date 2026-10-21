@@ -1,3 +1,9 @@
+# Journey revision — 21 October 2026
+
+See [JOURNEY-REVISION.md](JOURNEY-REVISION.md) for sources, design reasoning, GitHub data handling and checks. Replaced AP/APV placeholders, rewrote personal copy, added dated timeline and credentials, and a live-refresh contribution calendar with saved fallback. Earlier reports below describe superseded revisions.
+
+---
+
 # Screenshot previews and readable capabilities — 2026-10-20
 
 Replaced project overview, cards, inspector and case-study artwork with the three user-supplied landing-page screenshots. Encoded as WebP (about 311 KB combined) and lazy loaded. TreasuryFlow taskbar is excluded by the display frame. No canvas remains in the rendered project overview; Three.js is no longer included in the production output. The original Ronin hero is retained.

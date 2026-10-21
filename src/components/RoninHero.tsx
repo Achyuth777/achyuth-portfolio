@@ -1,4 +1,5 @@
 import { useRef, useState, type CSSProperties } from "react";
+import RoninEmblem from "./RoninEmblem";
 const asset = (file: string) =>
   `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2F${file}.png&w=1920&q=85`;
 export const roninBase = asset(
@@ -46,15 +47,18 @@ export default function RoninHero() {
         <div className="ronin-copy">
           <span className="label">CHENNAI, INDIA / STUDENT & BUILDER</span>
           <h1>
-            {["ACHYUTH PV //", "BUILDING", "WHAT’S NEXT."].map((line, i) => (
-              <span key={line} style={{ "--line": i } as CSSProperties}>
-                {line}
-              </span>
-            ))}
+            {["ACHYUTH PV //", "CODE, FINANCE", "& CURIOSITY."].map(
+              (line, i) => (
+                <span key={line} style={{ "--line": i } as CSSProperties}>
+                  {line}
+                </span>
+              ),
+            )}
           </h1>
           <p>
-            Turning complex ideas into useful experiences. Exploring full-stack
-            development, AI, fintech, and Web3—one thoughtful project at a time.
+            I’m an IT student in Chennai. I build web projects around payments,
+            supply chains and crypto — mostly because I want to understand how
+            they work.
           </p>
           <div className="ronin-actions">
             <a className="button primary" href="#projects">
@@ -86,12 +90,14 @@ export default function RoninHero() {
         </button>
         <div className="ronin-bottom">
           <a className="ronin-profile" href="/about">
-            <span className="ronin-monogram">AP</span>
+            <span className="ronin-monogram">
+              <RoninEmblem />
+            </span>
             <span>
               <strong>
-                Curious by nature.
+                A little about me.
                 <br />
-                Builder by choice.
+                Beyond the projects.
               </strong>
               <small>SRMIST RAMAPURAM · IT-A</small>
             </span>

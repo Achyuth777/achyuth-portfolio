@@ -17,21 +17,43 @@ export default function About() {
     ],
     [
       "Outside the editor",
-      "Gaming, books, basketball and football. Different ways to stay curious, practice and see another perspective.",
+      "I like story-driven games, basketball and football. Not everything has to turn into a project.",
     ],
   ];
   return (
     <div className="page">
       <Heading
         index="01 / ABOUT"
-        title="A mind for systems. A habit of making."
-        copy="I’m Achyuth PV — a student exploring the space between an ambitious idea and something useful."
+        title="Hey, I’m Achyuth."
+        copy="IT student at SRM Ramapuram. Based in Chennai. Usually thinking about finance, Web3 or the next thing I want to try."
       />
       <div className="about-layout">
         <div className="identity-card">
-          <div className="identity-monogram">
-            AP<span>V</span>
-            <i>↗</i>
+          <div className="desk-notes">
+            <span className="label">ON MY DESK / PROJECT NOTES</span>
+            <svg viewBox="0 0 400 200" fill="none" aria-hidden="true">
+              <path
+                d="M40 135V70l85-45 85 45v65l-85 45Z M40 70l85 45 85-45 M125 115v65 M210 103h65l35-48h55 M275 103l35 47h55"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <circle cx="310" cy="55" r="5" fill="currentColor" />
+              <circle cx="310" cy="150" r="5" fill="currentColor" />
+              <path
+                d="M70 135v-25m16 34v-25m16 34v-25"
+                stroke="currentColor"
+                strokeWidth="3"
+              />
+            </svg>
+            <a href="/projects/supplylens">
+              <span>01 / INVENTORY</span>SupplyLens ↗
+            </a>
+            <a href="/projects/treasuryflow">
+              <span>02 / PAYMENTS</span>TreasuryFlow ↗
+            </a>
+            <a href="/projects/argus-ai">
+              <span>03 / RISK</span>Argus AI ↗
+            </a>
           </div>
           <div className="identity-meta">
             <span>ACHYUTH PV</span>
@@ -47,30 +69,34 @@ export default function About() {
           </p>
         </div>
         <div className="about-story">
-          <Label>THE BUILDING MINDSET</Label>
+          <Label>WHY THESE PROJECTS</Label>
           <h2>
-            From “what if”
+            I’m interested in
             <br />
-            to <em>“how does it work?”</em>
+            <em>how money moves.</em>
           </h2>
           <p>
-            My interests connect full-stack development, AI, fintech, blockchain
-            and entrepreneurship. Building projects is how I turn those
-            interests into questions I can actually investigate.
+            Payments, markets and crypto caught my attention before I started
+            building apps. That interest is still behind a lot of what I choose
+            to work on.
           </p>
           <p>
-            SupplyLens explores decisions under uncertainty. TreasuryFlow
-            explores trust and recovery. Argus AI explores the limits of a risk
-            model. Together, they reflect the kind of product engineering I want
-            to keep pursuing.
+            TreasuryFlow looks at payment approvals. Argus AI looks at what
+            happens to a DeFi position when prices fall. SupplyLens is a
+            different problem: figuring out what a business needs to order
+            before stock runs out.
+          </p>
+          <p>
+            I’m still learning. I use these projects to try things, read the
+            code, and work out what I’d do differently next time.
           </p>
           <a className="underlink" href="/projects">
-            See those questions in practice <Arrow />
+            Take a look at the projects <Arrow />
           </a>
         </div>
       </div>
       <section className="section interest-section">
-        <Label>FOUR WINDOWS INTO MY WORLD</Label>
+        <Label>A FEW OTHER THINGS</Label>
         <div className="interest-layout">
           <div
             className="interest-tabs"

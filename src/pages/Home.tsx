@@ -1,3 +1,4 @@
+import RoninEmblem from "../components/RoninEmblem";
 import { Button, Label } from "../components/UI";
 import RoninHero from "../components/RoninHero";
 import ProjectOverview from "../components/ProjectOverview";
@@ -16,14 +17,14 @@ export default function Home() {
           <div>
             <Label>01 / SELECTED WORK</Label>
             <h2>
-              Ideas, made
+              Things I’ve
               <br />
-              <em>operational.</em>
+              <em>been working on.</em>
             </h2>
           </div>
           <p>
-            Three projects. Three questions about how software can help us see
-            clearly, move safely and make better decisions.
+            A supply-chain planner, a payments app and a DeFi risk simulator.
+            Pick one to see the demo and what’s behind it.
           </p>
         </div>
         <ProjectOverview />
@@ -34,20 +35,19 @@ export default function Home() {
       <section id="about" className="section manifesto">
         <Label>02 / THE PERSON BEHIND THE SYSTEMS</Label>
         <h2>
-          Curious by default.
-          <br />A builder <em>by choice.</em>
+          Hi, I’m Achyuth.
+          <br />
+          Here’s a bit <em>about me.</em>
         </h2>
         <div className="manifesto-bottom">
           <span className="seal" aria-hidden="true">
-            APV
-            <br />
-            <small>作る / BUILD</small>
+            <RoninEmblem />
           </span>
           <div>
             <p>
-              I’m Achyuth, an Information Technology student at SRMIST
-              Ramapuram. I explore how an idea becomes a product — from the
-              interface someone touches to the systems they trust.
+              I study IT at SRMIST Ramapuram. Outside classes, I spend time on
+              Web3 events, side projects and the occasional game. Fintech is the
+              area I keep coming back to.
             </p>
             <Button href="/about">A little more about me</Button>
           </div>
@@ -57,9 +57,9 @@ export default function Home() {
         <div>
           <Label>03 / CAPABILITIES</Label>
           <h2>
-            Connected tools.
+            What I’m
             <br />
-            Considered systems.
+            working with.
           </h2>
         </div>
         <div>
@@ -73,9 +73,9 @@ export default function Home() {
       <section id="journey" className="section home-journey">
         <Label>04 / IN PROGRESS</Label>
         <h2>
-          Learning in public.
+          Outside the classroom.
           <br />
-          Building with purpose.
+          And behind the commits.
         </h2>
         <div className="mini-timeline">
           <span>SRMIST / IT-A</span>
@@ -87,9 +87,9 @@ export default function Home() {
       <section id="contact" className="section closing">
         <Label>05 / OPEN A CHANNEL</Label>
         <h2>
-          Let’s make
+          Have an idea?
           <br />
-          <em>something matter.</em>
+          <em>Let’s talk.</em>
         </h2>
         <Button href="/contact" primary>
           Start a conversation

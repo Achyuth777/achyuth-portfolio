@@ -1,0 +1,559 @@
+.ronin-emblem {
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+}
+.seal {
+  width: 100px;
+  height: 100px;
+  padding: 12px;
+}
+.ronin-monogram {
+  padding: 10px;
+}
+.desk-notes {
+  color: var(--cream);
+  padding-bottom: 30px;
+}
+.desk-notes svg {
+  width: 100%;
+  height: 180px;
+  color: var(--accent);
+  margin: 20px 0;
+}
+.desk-notes a {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 18px;
+}
+.desk-notes a span {
+  font: 11px/1.8 monospace;
+  color: var(--muted);
+}
+.identity-card {
+  background: linear-gradient(135deg, #2a1c12, #15110e);
+}
+.journey-page {
+  --chapter-line: #5b3e29;
+}
+.journey-page .page-heading {
+  max-width: 1050px;
+}
+.journey-page .page-heading h1 {
+  font-size: clamp(38px, 5.7vw, 80px);
+}
+.journey-intro-strip {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px 0;
+  border-block: 1px solid var(--line);
+  font-size: 14px;
+}
+.journey-intro-strip > span {
+  font: 12px/1.6 monospace;
+  letter-spacing: 0.06em;
+}
+.journey-intro-strip i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-right: 10px;
+}
+.journey-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 70px;
+  padding: 80px 0;
+}
+.chapter-index {
+  position: sticky;
+  top: 115px;
+  align-self: start;
+}
+.chapter-index h2 {
+  font-size: 44px;
+  margin: 22px 0;
+  line-height: 1.2;
+}
+.chapter-index p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.chapter-progress {
+  height: 3px;
+  background: #39291e;
+  margin: 30px 0 12px;
+}
+.chapter-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.35s ease;
+}
+.chapter-count {
+  font: 12px/1.7 monospace;
+  color: var(--muted);
+}
+.year-index {
+  display: grid;
+  margin: 35px 0;
+}
+.year-index a {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 22px;
+}
+.year-index a:hover {
+  color: var(--accent);
+}
+.chapter-index .chapter-small {
+  font-size: 13px;
+}
+.chapter-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 36px;
+}
+.chapter-filters button {
+  font-size: 13px;
+  padding: 10px 15px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  min-height: 44px;
+}
+.chapter-filters button[aria-pressed="true"] {
+  color: #17100b;
+  background: var(--cream);
+  border-color: var(--cream);
+}
+.chapter {
+  position: relative;
+  margin-left: 18px;
+  padding: 0 0 48px 38px;
+  border-left: 1px solid var(--chapter-line);
+  scroll-margin-top: 115px;
+}
+.chapter-dot {
+  position: absolute;
+  top: 0;
+  left: -17px;
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  background: #17120f;
+  border: 1px solid #aa6836;
+  border-radius: 50%;
+  color: var(--accent);
+  font: 11px monospace;
+}
+.chapter-date {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 33px;
+  margin-bottom: 14px;
+  font: 12px/1.5 monospace;
+  color: #bca081;
+  letter-spacing: 0.06em;
+}
+.chapter-date > span {
+  color: var(--accent);
+}
+.chapter details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(120deg, #23190f, #14110e);
+  overflow: hidden;
+}
+.chapter summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  padding: 26px;
+  gap: 12px;
+  cursor: pointer;
+}
+.chapter summary::-webkit-details-marker {
+  display: none;
+}
+.chapter h3 {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+.chapter summary p {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.chapter-plus {
+  color: var(--accent);
+  font-size: 24px;
+  transition: transform 0.25s;
+}
+.chapter details[open] .chapter-plus {
+  transform: rotate(45deg);
+}
+.chapter details[open] {
+  border-color: #a46133;
+}
+.chapter-body {
+  padding: 0 26px 28px;
+  animation: chapter-in 0.3s ease;
+}
+.chapter-body p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #d2bfa6;
+  margin-bottom: 24px;
+}
+.chapter-body a {
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 24px;
+  border-bottom: 1px solid #b27945;
+  padding-bottom: 6px;
+}
+.next-checkpoint {
+  display: flex;
+  gap: 25px;
+  margin-left: 3px;
+  padding: 10px 0;
+}
+.next-checkpoint > span {
+  color: var(--accent);
+  font-size: 38px;
+}
+.next-checkpoint p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+.next-checkpoint strong {
+  display: block;
+  color: var(--cream);
+  font-size: 20px;
+  font-weight: 500;
+}
+.github-activity {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(20px, 4vw, 48px);
+  background: #15120f;
+  scroll-margin-top: 100px;
+}
+.activity-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 25px;
+}
+.activity-heading > div {
+  max-width: 660px;
+}
+.activity-heading h2,
+.credential-section > h2 {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  margin: 17px 0;
+}
+.activity-heading p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.activity-heading a {
+  white-space: nowrap;
+  font-size: 14px;
+}
+.activity-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 35px 0;
+  border-block: 1px solid var(--line);
+  padding: 25px 0;
+  gap: 20px;
+}
+.activity-stats strong {
+  display: block;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: -0.04em;
+}
+.activity-stats span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.contribution-scroll {
+  overflow-x: auto;
+  padding: 6px 3px 14px;
+}
+.contribution-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 13px);
+  grid-auto-columns: minmax(13px, 1fr);
+  gap: 4px;
+  min-width: 900px;
+}
+.contribution-cell {
+  border-radius: 3px;
+  min-width: 0;
+  border: 1px solid #ffffff08;
+}
+.contribution-cell:hover,
+.contribution-cell:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 1px;
+}
+.level-0 {
+  background: #29231e;
+}
+.level-1 {
+  background: #6b3a1e;
+}
+.level-2 {
+  background: #a95624;
+}
+.level-3 {
+  background: #e08036;
+}
+.level-4 {
+  background: #fbcb8b;
+}
+.activity-legend {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font: 11px/1.6 monospace;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.activity-legend > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.activity-legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+}
+.day-detail {
+  font-size: 14px;
+  margin: 22px 0 10px;
+  min-height: 24px;
+}
+.activity-note {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #b9a58b;
+  max-width: 850px;
+}
+.credential-section {
+  padding: 90px 0 50px;
+}
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+.credential {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.credential:hover {
+  border-color: var(--accent);
+  background: #251a11;
+}
+.credential-date {
+  display: flex;
+  justify-content: space-between;
+  color: var(--accent);
+  font: 12px monospace;
+}
+.credential h3 {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  margin: 25px 0 14px;
+}
+.credential p {
+  font-size: 15px;
+  color: var(--muted);
+}
+.credential small {
+  display: block;
+  margin-top: 20px;
+  font: 11px/1.6 monospace;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+.credential-footnote {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 22px;
+}
+.earlier-notes {
+  border-block: 1px solid var(--line);
+  padding: 24px 0;
+}
+.earlier-notes summary {
+  cursor: pointer;
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+}
+.earlier-notes p {
+  margin: 22px 0;
+  max-width: 700px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+@keyframes chapter-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 900px) {
+  .journey-shell {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 35px;
+  }
+  .chapter-index h2 {
+    font-size: 33px;
+  }
+  .activity-heading {
+    display: block;
+  }
+  .activity-heading a {
+    margin-top: 20px;
+  }
+  .chapter {
+    padding-left: 27px;
+  }
+  .chapter summary {
+    padding: 22px;
+  }
+  .chapter-body {
+    padding: 0 22px 24px;
+  }
+}
+@media (max-width: 680px) {
+  .journey-shell {
+    display: block;
+    padding: 42px 0;
+  }
+  .chapter-index {
+    position: static;
+    margin-bottom: 40px;
+  }
+
+  .chapter-index h2 {
+    font-size: 32px;
+  }
+  .year-index {
+    display: flex;
+    gap: 24px;
+    margin: 20px 0;
+  }
+  .year-index a {
+    flex: 1;
+    font-size: 18px;
+  }
+  .chapter-index .chapter-small {
+    display: none;
+  }
+  .chapter {
+    padding-left: 24px;
+    margin-left: 15px;
+    padding-bottom: 30px;
+  }
+  .chapter summary {
+    padding: 18px;
+  }
+  .chapter h3 {
+    font-size: 22px;
+  }
+  .chapter-body {
+    padding: 0 18px 22px;
+  }
+  .chapter-date {
+    font-size: 11px;
+    gap: 10px;
+  }
+  .chapter-filters {
+    gap: 5px;
+  }
+  .chapter-filters button {
+    padding: 8px 12px;
+  }
+  .activity-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .activity-stats strong {
+    font-size: 32px;
+  }
+  .credential-grid {
+    grid-template-columns: 1fr;
+  }
+  .credential-section {
+    padding-top: 58px;
+  }
+  .journey-intro-strip {
+    font-size: 13px;
+  }
+  .journey-page .page-heading h1 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+  .desk-notes a {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-body {
+    animation: none;
+  }
+  .chapter-progress span,
+  .chapter-plus,
+  .credential {
+    transition: none;
+  }
+}
