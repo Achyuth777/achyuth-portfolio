@@ -8,3 +8,5 @@ if (root.children.length) hydrateRoot(root, app);
 else createRoot(root).render(app);
 
 import "./journey.css";
+
+import "./personal-about.css";
