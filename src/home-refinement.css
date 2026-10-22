@@ -97,7 +97,6 @@ html.lenis {
   padding-bottom: 80px;
 }
 .home-about .personal-intro {
-  grid-template-columns: 1fr;
   min-height: auto;
   padding-top: 80px;
 }
