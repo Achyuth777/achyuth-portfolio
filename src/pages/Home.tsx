@@ -1,4 +1,3 @@
-import RoninEmblem from "../components/RoninEmblem";
 import { Button, Label } from "../components/UI";
 import RoninHero from "../components/RoninHero";
 import ProjectOverview from "../components/ProjectOverview";
@@ -12,7 +11,7 @@ export default function Home() {
         <span>FINTECH & WEB3</span>
         <span>PRODUCT ENGINEERING</span>
       </div>
-      <section id="projects" className="section">
+      <section id="projects" className="section home-selected">
         <div className="section-heading">
           <div>
             <Label>01 / SELECTED WORK</Label>
@@ -29,71 +28,75 @@ export default function Home() {
         </div>
         <ProjectOverview />
         <div className="archive-link">
-          <Button href="/projects">Browse the full project archive</Button>
+          <Button href="/projects">All projects & case studies</Button>
         </div>
       </section>
-      <section id="about" className="section manifesto">
-        <Label>02 / THE PERSON BEHIND THE SYSTEMS</Label>
-        <h2>
-          Hi, I’m Achyuth.
-          <br />
-          Here’s a bit <em>about me.</em>
-        </h2>
-        <div className="manifesto-bottom">
-          <span className="seal" aria-hidden="true">
-            <RoninEmblem />
-          </span>
-          <div>
+      <section
+        id="about"
+        className="section home-personal"
+        aria-labelledby="home-personal-title"
+      >
+        <div className="home-personal-top">
+          <div className="home-personal-photo">
+            <img
+              src="/portraits/achyuth.webp"
+              alt="Achyuth PV"
+              width="1105"
+              height="1423"
+              loading="lazy"
+            />
+            <span>CHENNAI, INDIA / IT-A</span>
+          </div>
+          <div className="home-personal-story">
+            <Label>02 / A LITTLE MORE ABOUT ME</Label>
+            <h2 id="home-personal-title">
+              Finance got me curious.
+              <br />
+              <em>Building keeps me here.</em>
+            </h2>
             <p>
-              I study IT at SRMIST Ramapuram. Outside classes, I spend time on
-              Web3 events, side projects and the occasional game. Fintech is the
-              area I keep coming back to.
+              I study IT at SRM Ramapuram. Payments and Web3 are the ideas I
+              keep coming back to. Outside college, there are community events,
+              basketball, and games I tell myself I’ll play for just an hour.
             </p>
-            <Button href="/about">A little more about me</Button>
+            <Button href="/about">Meet the person behind the projects</Button>
           </div>
         </div>
-      </section>
-      <section id="skills" className="section compact-section">
-        <div>
-          <Label>03 / CAPABILITIES</Label>
-          <h2>
-            What I’m
-            <br />
-            working with.
-          </h2>
+        <div className="home-personal-links">
+          <a id="skills" className="home-note" href="/skills">
+            <span className="label">THE TOOLS</span>
+            <h3>What I’m working with.</h3>
+            <p>
+              React, TypeScript, Python, SQL and MongoDB. See where they fit
+              into my projects.
+            </p>
+            <span className="home-note-link">
+              Explore my stack <b aria-hidden="true">↗</b>
+            </span>
+          </a>
+          <a id="journey" className="home-note" href="/experience">
+            <span className="label">THE STORY SO FAR</span>
+            <h3>More than coursework.</h3>
+            <p>
+              Web3 communities, my internship, courses and the work between
+              milestones.
+            </p>
+            <span className="home-note-link">
+              Follow my journey <b aria-hidden="true">↗</b>
+            </span>
+          </a>
+          <a id="contact" className="home-note" href="/contact">
+            <span className="label">SAY HELLO</span>
+            <h3>Something in common?</h3>
+            <p>
+              A project idea, a fintech conversation, or just a hello. I’d like
+              to hear from you.
+            </p>
+            <span className="home-note-link">
+              Let’s talk <b aria-hidden="true">↗</b>
+            </span>
+          </a>
         </div>
-        <div>
-          <p className="lede">
-            Interfaces, APIs, data and programmable value. Explore the
-            technologies behind the work.
-          </p>
-          <Button href="/skills">Explore my tech stack</Button>
-        </div>
-      </section>
-      <section id="journey" className="section home-journey">
-        <Label>04 / IN PROGRESS</Label>
-        <h2>
-          Outside the classroom.
-          <br />
-          And behind the commits.
-        </h2>
-        <div className="mini-timeline">
-          <span>SRMIST / IT-A</span>
-          <span>TECHNICAL EXPLORATION</span>
-          <span>PRODUCT EXPERIMENTS</span>
-        </div>
-        <Button href="/experience">Explore my journey</Button>
-      </section>
-      <section id="contact" className="section closing">
-        <Label>05 / OPEN A CHANNEL</Label>
-        <h2>
-          Have an idea?
-          <br />
-          <em>Let’s talk.</em>
-        </h2>
-        <Button href="/contact" primary>
-          Start a conversation
-        </Button>
       </section>
     </>
   );

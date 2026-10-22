@@ -10,3 +10,6 @@ else createRoot(root).render(app);
 import "./journey.css";
 
 import "./personal-about.css";
+
+import "lenis/dist/lenis.css";
+import "./home-refinement.css";
