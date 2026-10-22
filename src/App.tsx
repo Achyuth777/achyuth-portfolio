@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { projects, nav, pageTitle } from "./data";
 import { Label, Heading, Button, Arrow } from "./components/UI";
+import SectionNav from "./components/SectionNav";
+import "./recruiter-polish.css";
 import Home from "./pages/Home";
 import { useSmoothScroll } from "./components/useSmoothScroll";
 import ProjectInspector from "./components/ProjectInspector";
@@ -63,6 +65,8 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
       if (
         !a ||
         a.target ||
+        a.hasAttribute("download") ||
+        /\.(pdf|jpe?g|png)$/i.test(a.pathname) ||
         e.defaultPrevented ||
         e.button !== 0 ||
         e.metaKey ||
@@ -208,6 +212,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
       <main id="main" ref={main} tabIndex={-1} key={path}>
         {content}
       </main>
+      {path === "/" && !menu && <SectionNav />}
       <footer className="site-footer">
         <a href="/" className="footer-brand">
           ACHYUTH PV /

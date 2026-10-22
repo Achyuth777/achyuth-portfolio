@@ -35,6 +35,29 @@ export default function CaseStudy({ p }: { p: Project }) {
           </a>
         </div>
       </header>
+      <section className="build-context" aria-label="Project context">
+        <div>
+          <Label>HOW THIS WAS BUILT</Label>
+          <h2>AI-assisted, and still learning.</h2>
+          <p>
+            I used AI coding tools extensively to build this project. I’m
+            working through the implementation so I can explain the decisions,
+            debug problems and make changes with more independence.
+          </p>
+        </div>
+        <div>
+          <Label>TRY IT WITH CONTEXT</Label>
+          <p>{p.boundary}</p>
+          <a
+            className="underlink"
+            href={p.repo}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Inspect the implementation ↗
+          </a>
+        </div>
+      </section>
       <div className="case-cover">
         <div>
           <span className="label">PROJECT PREVIEW / LANDING PAGE</span>

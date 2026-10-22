@@ -226,47 +226,52 @@ export default function About({ embedded = false }: { embedded?: boolean }) {
           </a>
         </div>
       </section>
-      <section className="personal-worknotes" aria-labelledby="worknotes-title">
-        <div className="worknotes-heading">
-          <Label>THAT’S HOW THESE HAPPENED</Label>
-          <h2 id="worknotes-title">
-            Three interests.
-            <br />
-            Three tabs still open.
-          </h2>
-        </div>
-        <div className="worknotes-list">
-          {[
-            [
-              "01",
-              "SupplyLens",
-              "What if you could spot a stock shortage before it became a problem?",
-              "supplylens",
-            ],
-            [
-              "02",
-              "TreasuryFlow",
-              "Who approved this payment, and what happens if it fails halfway?",
-              "treasuryflow",
-            ],
-            [
-              "03",
-              "Argus AI",
-              "What happens to a DeFi position if the market drops?",
-              "argus-ai",
-            ],
-          ].map(([n, name, copy, slug]) => (
-            <a href={"/projects/" + slug} key={slug}>
-              <span>{n}</span>
-              <div>
-                <h3>{name}</h3>
-                <p>{copy}</p>
-              </div>
-              <span>↗</span>
-            </a>
-          ))}
-        </div>
-      </section>
+      {!embedded && (
+        <section
+          className="personal-worknotes"
+          aria-labelledby="worknotes-title"
+        >
+          <div className="worknotes-heading">
+            <Label>THAT’S HOW THESE HAPPENED</Label>
+            <h2 id="worknotes-title">
+              Three interests.
+              <br />
+              Three tabs still open.
+            </h2>
+          </div>
+          <div className="worknotes-list">
+            {[
+              [
+                "01",
+                "SupplyLens",
+                "What if you could spot a stock shortage before it became a problem?",
+                "supplylens",
+              ],
+              [
+                "02",
+                "TreasuryFlow",
+                "Who approved this payment, and what happens if it fails halfway?",
+                "treasuryflow",
+              ],
+              [
+                "03",
+                "Argus AI",
+                "What happens to a DeFi position if the market drops?",
+                "argus-ai",
+              ],
+            ].map(([n, name, copy, slug]) => (
+              <a href={"/projects/" + slug} key={slug}>
+                <span>{n}</span>
+                <div>
+                  <h3>{name}</h3>
+                  <p>{copy}</p>
+                </div>
+                <span>↗</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
       <section
         className="personal-offline"
         style={{ "--interest-color": item.color } as CSSProperties}

@@ -43,6 +43,7 @@ export default function ProjectOverview() {
               <span key={t}>{t}</span>
             ))}
           </div>
+          <p className="demo-access">{p.boundary}</p>
           <span className="overview-status">{p.status}</span>
           <a className="button primary" href={"/projects/" + p.slug}>
             Explore case study <span>↗</span>
@@ -54,6 +55,14 @@ export default function ProjectOverview() {
             rel="noreferrer"
           >
             Open live demo ↗
+          </a>
+          <a
+            className="overview-demo"
+            href={p.repo}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View code on GitHub ↗
           </a>
         </div>
       </div>
