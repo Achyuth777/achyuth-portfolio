@@ -105,23 +105,80 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
       removeEventListener("popstate", visit);
     };
   }, []);
+  // Reveal only off-screen elements. Above-the-fold content is never hidden.
+  // Native scrolling and reduced-motion preferences remain untouched.
   useEffect(() => {
-    const els = document.querySelectorAll(
-      ".section-heading,.manifesto h2,.feature,.architecture li,.timeline details,.project-card",
+    const root = main.current;
+    if (!root || !("IntersectionObserver" in window)) return;
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    if (motion.matches) return;
+
+    const selector = [
+      ".section-heading",
+      ".page-heading",
+      ".personal-intro-copy",
+      ".portrait-composition",
+      ".personal-story-copy",
+      ".offline-heading",
+      ".offline-switches",
+      ".offline-content",
+      ".personal-signoff",
+      ".project-overview",
+      ".project-index .project-card",
+      ".tool-group-heading",
+      ".tool-card",
+      ".tool-support",
+      ".chapter-index",
+      ".chapter-stream article",
+      ".credentials-section",
+      ".coding-activity",
+      ".contact-layout > *",
+      ".contact-finale",
+      ".feature",
+      ".architecture-grid li",
+      ".case-reflection > *",
+    ].join(", ");
+    const registered = new WeakSet<Element>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("motion-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.02, rootMargin: "0px 0px -6% 0px" },
     );
-    if (!("IntersectionObserver" in window)) return;
-    const io = new IntersectionObserver(
-      (es) =>
-        es.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("revealed");
-            io.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.08 },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    const register = () => {
+      root.querySelectorAll<HTMLElement>(selector).forEach((element, index) => {
+        if (registered.has(element)) return;
+        registered.add(element);
+        const box = element.getBoundingClientRect();
+        // No flash or invisible UI when a route or anchor opens in view.
+        if (box.bottom <= 0 || box.top < innerHeight * 0.9) return;
+        element.classList.add("motion-reveal");
+        element.style.setProperty("--motion-delay", `${(index % 4) * 65}ms`);
+        observer.observe(element);
+      });
+    };
+    register();
+    // Also animate items introduced by filtering without rerunning the page.
+    const mutations = new MutationObserver(register);
+    mutations.observe(root, { childList: true, subtree: true });
+    const onMotionChange = () => {
+      if (!motion.matches) return;
+      root.querySelectorAll(".motion-reveal").forEach((element) => {
+        element.classList.add("motion-visible");
+      });
+      observer.disconnect();
+    };
+    motion.addEventListener("change", onMotionChange);
+    return () => {
+      observer.disconnect();
+      mutations.disconnect();
+      motion.removeEventListener("change", onMotionChange);
+    };
   }, [path]);
   const sectionHref = (href: string) =>
     path === "/"
