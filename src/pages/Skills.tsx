@@ -118,17 +118,19 @@ export default function Skills({ embedded = false }: { embedded?: boolean }) {
           and SupplyLens.
         </p>
       </section>
-      <section className="section skill-inventory">
-        <Label>PROJECT STACKS</Label>
-        {projects.map((p) => (
-          <div key={p.slug}>
-            <h3>
-              <a href={"/projects/" + p.slug}>{p.name} ↗</a>
-            </h3>
-            <p>{p.stack.join(" / ")}</p>
-          </div>
-        ))}
-      </section>
+      {!embedded && (
+        <section className="section skill-inventory">
+          <Label>PROJECT STACKS</Label>
+          {projects.map((p) => (
+            <div key={p.slug}>
+              <h3>
+                <a href={"/projects/" + p.slug}>{p.name} ↗</a>
+              </h3>
+              <p>{p.stack.join(" / ")}</p>
+            </div>
+          ))}
+        </section>
+      )}
       {!embedded && <Next href="/projects" label="See the tools in practice" />}
     </div>
   );
