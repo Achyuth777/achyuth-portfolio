@@ -1,0 +1,196 @@
+/* Logo-led skill cards, integrated with the existing Ronin surface. */
+.skills-page .page-heading {
+  margin-bottom: 54px;
+}
+.tool-group {
+  margin: 0 0 46px;
+}
+.tool-group-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.tool-group-heading h2,
+.tool-group-heading h3 {
+  font:
+    500 clamp(19px, 2vw, 25px)/1.3 Inter,
+    sans-serif;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.tool-group-heading > span {
+  font: 10px monospace;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tool-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.tool-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(251, 219, 175, 0.14);
+  border-radius: 18px;
+  background: rgba(251, 219, 175, 0.025);
+  transition:
+    border-color 0.25s,
+    transform 0.25s;
+}
+.tool-card > a,
+.tool-card > div {
+  display: block;
+  height: 100%;
+}
+.tool-card a:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: -4px;
+  border-radius: 18px;
+}
+.tool-logo {
+  height: 145px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      ellipse at 50% 110%,
+      rgba(224, 112, 32, 0.13),
+      transparent 75%
+    ),
+    rgba(251, 219, 175, 0.035);
+  border-bottom: 1px solid rgba(251, 219, 175, 0.07);
+  overflow: hidden;
+}
+.tool-logo:before {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(251, 219, 175, 0.025);
+  top: -47px;
+  left: -15%;
+}
+.tool-logo img,
+.tool-logo svg {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  transition: transform 0.25s;
+}
+.tool-logo-nextjs img { filter: invert(1); }
+.tool-logo-solidity img {
+  filter: brightness(0) invert(90%) sepia(18%) saturate(700%) hue-rotate(337deg);
+}
+.tool-card-hint {
+  position: absolute;
+  bottom: 10px;
+  font: 9px monospace;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tool-caption {
+  padding: 21px 18px 23px;
+  text-align: center;
+}
+.tool-caption strong {
+  display: block;
+  font:
+    400 clamp(15px, 1.5vw, 21px)/1.3 "Orbitron-Medium",
+    sans-serif;
+  color: var(--cream);
+}
+.tool-caption > span {
+  display: block;
+  color: var(--muted);
+  font:
+    12px/1.6 Inter,
+    sans-serif;
+  margin-top: 9px;
+}
+.tool-card:has(a):hover,
+.tool-card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(224, 112, 32, 0.65);
+}
+.tool-card:hover .tool-card-hint,
+.tool-card:focus-within .tool-card-hint {
+  opacity: 1;
+}
+.tool-card:has(a):hover img {
+  transform: translateY(-5px);
+}
+.tool-support {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.tool-support p {
+  color: var(--cream);
+  line-height: 2;
+  font-size: 15px;
+  max-width: 950px;
+}
+.tool-support .tool-support-note {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .tool-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .tool-logo {
+    height: 115px;
+  }
+  .tool-logo img,
+  .tool-logo svg {
+    width: 50px;
+    height: 50px;
+  }
+  .tool-caption {
+    padding: 17px 9px;
+  }
+  .tool-caption strong {
+    font-size: 14px;
+  }
+  .tool-caption > span {
+    font-size: 11px;
+  }
+  .tool-group-heading > span {
+    display: none;
+  }
+  .tool-group {
+    margin-bottom: 32px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-card,
+  .tool-logo img,
+  .tool-logo svg,
+  .tool-card-hint {
+    transition: none;
+  }
+  .tool-card:has(a):hover,
+  .tool-card:focus-within,
+  .tool-card:has(a):hover img {
+    transform: none;
+  }
+}
