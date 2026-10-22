@@ -98,7 +98,7 @@ export default function About({ embedded = false }: { embedded?: boolean }) {
     <div className={"personal-about " + (paused ? "motion-paused" : "")}>
       <section className="personal-intro">
         <div className="personal-intro-copy">
-          <Label>{embedded ? "02" : "01"} / ABOUT ME</Label>
+          <Label>01 / ABOUT ME</Label>
           <Title className="personal-title">
             Hey, I’m
             <br />
