@@ -125,58 +125,55 @@ export default function About({ embedded = false }: { embedded?: boolean }) {
             </button>
           </div>
         </div>
-        {!embedded && (
-          <figure className="portrait-composition">
-            <div className="portrait-halo" aria-hidden="true" />
-            <div className="portrait-orbit" aria-hidden="true">
-              <svg viewBox="0 0 120 120">
-                <path
-                  id="portrait-circle"
-                  d="M60 10a50 50 0 1 1-.1 0"
-                  fill="none"
-                />
-                <text>
-                  <textPath href="#portrait-circle">
-                    CHENNAI · IT STUDENT · CHENNAI · IT STUDENT ·{" "}
-                  </textPath>
-                </text>
-              </svg>
-            </div>
-            <div className="portrait-paper">
-              <img
-                src="/portraits/achyuth.webp"
-                width="1105"
-                height="1423"
-                alt="Achyuth PV wearing a dark suit and white shirt"
-                fetchPriority="high"
-              />
-              <figcaption>
-                <span>Achyuth PV</span>
-                <span>IT-A / SRMIST ↗</span>
-              </figcaption>
-            </div>
-            <span className="portrait-sticker sticker-college">
-              CHENNAI, INDIA
-              <br />
-              <strong>Home for now.</strong>
-            </span>
-            <span className="portrait-sticker sticker-note">
-              Yep, that’s me.
-            </span>
-            <svg
-              className="portrait-doodle"
-              viewBox="0 0 120 120"
-              aria-hidden="true"
-            >
+        <figure className="portrait-composition">
+          <div className="portrait-halo" aria-hidden="true" />
+          <div className="portrait-orbit" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
               <path
-                d="M14 12q83 9 64 67M57 65l19 21 23-15M25 28l9 10M12 48l16 4"
+                id="portrait-circle"
+                d="M60 10a50 50 0 1 1-.1 0"
                 fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
               />
+              <text>
+                <textPath href="#portrait-circle">
+                  CHENNAI · IT STUDENT · CHENNAI · IT STUDENT ·{" "}
+                </textPath>
+              </text>
             </svg>
-          </figure>
-        )}
+          </div>
+          <div className="portrait-paper">
+            <img
+              src="/portraits/achyuth.webp"
+              width="1105"
+              height="1423"
+              alt="Achyuth PV wearing a dark suit and white shirt"
+              fetchPriority={embedded ? "auto" : "high"}
+              loading={embedded ? "lazy" : "eager"}
+            />
+            <figcaption>
+              <span>Achyuth PV</span>
+              <span>IT-A / SRMIST ↗</span>
+            </figcaption>
+          </div>
+          <span className="portrait-sticker sticker-college">
+            CHENNAI, INDIA
+            <br />
+            <strong>Home for now.</strong>
+          </span>
+          <span className="portrait-sticker sticker-note">Yep, that’s me.</span>
+          <svg
+            className="portrait-doodle"
+            viewBox="0 0 120 120"
+            aria-hidden="true"
+          >
+            <path
+              d="M14 12q83 9 64 67M57 65l19 21 23-15M25 28l9 10M12 48l16 4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+            />
+          </svg>
+        </figure>
       </section>
       <div
         className="personal-ribbon"
