@@ -15,10 +15,17 @@ export default function Home() {
         <span>FINTECH & WEB3</span>
         <span>PRODUCT ENGINEERING</span>
       </div>
+      <section
+        id="about"
+        className="home-full home-about"
+        aria-label="About me"
+      >
+        <About embedded />
+      </section>
       <section id="projects" className="section home-selected">
         <div className="section-heading">
           <div>
-            <Label>01 / SELECTED WORK</Label>
+            <Label>02 / SELECTED WORK</Label>
             <h2>
               Things I’ve
               <br />
@@ -34,13 +41,6 @@ export default function Home() {
         <div className="archive-link">
           <Button href="/projects">All projects & case studies</Button>
         </div>
-      </section>
-      <section
-        id="about"
-        className="home-full home-about"
-        aria-label="About me"
-      >
-        <About embedded />
       </section>
       <section id="skills" className="home-full" aria-label="Capabilities">
         <Skills embedded />
