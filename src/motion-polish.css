@@ -1,0 +1,333 @@
+/*
+ * Portfolio motion + small-screen composition.
+ * Progressive enhancement: content stays readable without JavaScript,
+ * on touchscreens, and with reduced motion enabled.
+ */
+
+/* Low-cost opacity/translate reveals, attached to off-screen nodes only. */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition:
+      opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--motion-delay, 0ms);
+  }
+  .motion-reveal.motion-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Precise desktop hover states, never dependent on hover for navigation. */
+@media (hover: hover) and (pointer: fine) {
+  .ronin-profile {
+    transition:
+      transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      background-color 320ms,
+      border-color 320ms,
+      box-shadow 320ms;
+  }
+  .ronin-profile:hover,
+  .ronin-profile:focus-visible {
+    transform: translateY(-5px);
+    border-color: rgba(251, 219, 175, 0.75);
+    background-color: rgba(20, 13, 9, 0.94);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+  }
+  .ronin-profile > span:last-child {
+    transition: transform 260ms ease, color 260ms ease;
+  }
+  .ronin-profile:hover > span:last-child,
+  .ronin-profile:focus-visible > span:last-child {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+
+  .ronin-actions .button,
+  .reality-switch {
+    transition:
+      transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      background-color 240ms,
+      border-color 240ms,
+      box-shadow 280ms;
+  }
+  .ronin-actions .button:hover,
+  .ronin-actions .button:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+  }
+  .reality-switch:hover,
+  .reality-switch:focus-visible {
+    transform: translateY(-2px);
+    border-color: var(--cream);
+  }
+  .ronin-github {
+    position: relative;
+    transition: color 240ms;
+  }
+  .ronin-github::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 7px;
+    height: 1px;
+    background: currentColor;
+    transition: right 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ronin-github:hover::after,
+  .ronin-github:focus-visible::after {
+    right: 0;
+  }
+  .overview-screenshot {
+    transition:
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 320ms,
+      border-color 320ms;
+  }
+  .overview-screenshot:hover,
+  .overview-screenshot:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.25);
+  }
+  .overview-tabs button {
+    transition: color 220ms, background-color 220ms, border-color 220ms;
+  }
+  .overview-tabs button:hover,
+  .overview-tabs button:focus-visible {
+    background: rgba(251, 219, 175, 0.09);
+  }
+  .tool-card:has(a) {
+    transition:
+      transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 320ms,
+      box-shadow 320ms;
+  }
+  .tool-card:has(a):hover,
+  .tool-card:focus-within {
+    box-shadow: 0 15px 32px rgba(0, 0, 0, 0.18);
+  }
+  .personal-intro-links a,
+  .story-journey-link,
+  .journey-intro-strip a {
+    transition: color 220ms, border-color 220ms;
+  }
+  .personal-intro-links a:hover,
+  .personal-intro-links a:focus-visible,
+  .story-journey-link:hover,
+  .story-journey-link:focus-visible,
+  .journey-intro-strip a:hover,
+  .journey-intro-strip a:focus-visible {
+    color: #ef9956;
+  }
+  .contact-form .button,
+  .signal-station .button {
+    transition: transform 240ms, background-color 240ms, color 240ms;
+  }
+  .contact-form .button:hover,
+  .contact-form .button:focus-visible,
+  .signal-station .button:hover,
+  .signal-station .button:focus-visible {
+    transform: translateY(-2px);
+  }
+}
+
+/*
+ * The old mobile hero had min-height:850px and gap:210px. That forced a
+ * desktop-style composition on a narrow screen and detached the bottom card
+ * from the introduction. Recompose it as a compact, readable mobile cover.
+ */
+@media (max-width: 720px) {
+  .ronin-hero {
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+  .ronin-content {
+    height: auto;
+    min-height: 100svh;
+    padding:
+      max(112px, calc(env(safe-area-inset-top) + 98px))
+      clamp(18px, 5vw, 28px)
+      calc(96px + env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .ronin-base,
+  .ronin-reveal {
+    background-position: 56% center;
+  }
+  .ronin-shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(17, 10, 8, 0.83) 0%,
+        rgba(17, 10, 8, 0.67) 48%,
+        rgba(17, 10, 8, 0.89) 100%
+      ),
+      linear-gradient(90deg, rgba(17, 10, 8, 0.35), transparent 90%);
+  }
+  .ronin-copy {
+    width: 100%;
+    max-width: 500px;
+  }
+  .ronin-copy > .label {
+    display: block;
+    max-width: 310px;
+    font-size: 9px;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+  }
+  .ronin-copy h1 {
+    max-width: 100%;
+    font-size: clamp(32px, 8.2vw, 53px);
+    line-height: 1.07;
+    letter-spacing: -0.055em;
+    margin-top: 22px;
+  }
+  .ronin-copy h1 span {
+    white-space: nowrap;
+  }
+  .ronin-copy > p {
+    max-width: 370px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .ronin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 8px;
+    margin-top: 24px;
+  }
+  .ronin-actions .button {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+  .ronin-github {
+    min-height: 46px;
+    font-size: 12px;
+  }
+  .reality-switch {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    align-self: flex-start;
+    margin-top: 22px;
+    min-height: 44px;
+    font-size: 10px;
+    padding: 0 15px;
+    border-color: rgba(251, 219, 175, 0.55);
+    background-color: rgba(18, 12, 10, 0.65);
+  }
+  .ronin-bottom {
+    margin-top: clamp(30px, 7svh, 66px);
+    width: 100%;
+    display: block;
+  }
+  .ronin-profile {
+    width: 100%;
+    max-width: 390px;
+    min-height: 83px;
+    padding: 12px 14px;
+    gap: 13px;
+    border: 1px solid rgba(251, 219, 175, 0.38);
+    background: rgba(17, 11, 9, 0.87);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .ronin-monogram {
+    width: 49px;
+    height: 55px;
+    flex: 0 0 49px;
+  }
+  .ronin-profile strong {
+    font-size: 12px;
+  }
+  .ronin-profile small {
+    font-size: 8px;
+  }
+  /* Specs repeat the introduction and consume the entire first screen. */
+  .ronin-specs {
+    display: none;
+  }
+  .ronin-scroll {
+    left: clamp(18px, 5vw, 28px);
+    right: clamp(18px, 5vw, 28px);
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    z-index: 1;
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+}
+
+/* Compact phones still get the title, actions and profile with no overlap. */
+@media (max-width: 390px) {
+  .ronin-content {
+    padding-top: max(100px, calc(env(safe-area-inset-top) + 90px));
+    padding-inline: 16px;
+    padding-bottom: calc(90px + env(safe-area-inset-bottom));
+  }
+  .ronin-copy h1 {
+    font-size: clamp(30px, 8.55vw, 34px);
+    letter-spacing: -0.065em;
+    margin-top: 17px;
+  }
+  .ronin-copy > p {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 17px;
+  }
+  .ronin-actions {
+    margin-top: 18px;
+    column-gap: 14px;
+  }
+  .ronin-actions .button {
+    padding-inline: 14px;
+    font-size: 11px;
+  }
+  .reality-switch {
+    margin-top: 15px;
+  }
+  .ronin-bottom {
+    margin-top: 28px;
+  }
+  .ronin-scroll {
+    left: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 660px) {
+  .ronin-content {
+    padding-top: max(94px, calc(env(safe-area-inset-top) + 85px));
+  }
+  .ronin-bottom {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-reveal.motion-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .ronin-actions .button,
+  .ronin-profile,
+  .overview-screenshot {
+    transform: none !important;
+  }
+}
