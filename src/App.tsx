@@ -3,6 +3,7 @@ import { flushSync } from "react-dom";
 import { projects, nav, pageTitle } from "./data";
 import { Label, Heading, Button, Arrow } from "./components/UI";
 import Home from "./pages/Home";
+import { useSmoothScroll } from "./components/useSmoothScroll";
 import ProjectInspector from "./components/ProjectInspector";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -14,6 +15,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
   const [path, setPath] = useState(initialPath);
   const [menu, setMenu] = useState(false);
   const [query, setQuery] = useState("");
+  useSmoothScroll(path, menu);
   const dialog = useRef<HTMLDialogElement>(null);
   const main = useRef<HTMLElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);

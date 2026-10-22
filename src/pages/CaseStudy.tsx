@@ -37,7 +37,7 @@ export default function CaseStudy({ p }: { p: Project }) {
       </header>
       <div className="case-cover">
         <div>
-          <span className="label">SYSTEM PORTRAIT / ORIGINAL 3D STUDY</span>
+          <span className="label">PROJECT PREVIEW / LANDING PAGE</span>
           <h2>
             {p.slug === "supplylens" ? (
               <>

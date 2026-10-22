@@ -45,7 +45,9 @@ export default function RoninHero() {
       <div className="ronin-shade" aria-hidden="true" />
       <div className="ronin-content">
         <div className="ronin-copy">
-          <span className="label">CHENNAI, INDIA / STUDENT & BUILDER</span>
+          <span className="label">
+            CHENNAI, INDIA / IT STUDENT · FULL-STACK PROJECTS
+          </span>
           <h1>
             {["ACHYUTH PV //", "CODE, FINANCE", "& CURIOSITY."].map(
               (line, i) => (
