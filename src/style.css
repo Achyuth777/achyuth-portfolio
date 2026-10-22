@@ -543,7 +543,7 @@ main:focus {
 .page-heading .label {
   margin-bottom: 28px;
 }
-.page-heading h1 {
+.page-heading :is(h1, h2) {
   max-width: 1000px;
 }
 .lede {
@@ -1802,7 +1802,7 @@ main:focus {
   .page-heading {
     padding: 50px 0 42px;
   }
-  .page-heading h1 {
+  .page-heading :is(h1, h2) {
     font-size: clamp(43px, 11.4vw, 60px);
     line-height: 1.03;
   }

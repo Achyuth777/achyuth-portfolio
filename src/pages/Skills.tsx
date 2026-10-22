@@ -37,10 +37,11 @@ const clusters = [
     copy: "Exploring practical models, transparent assumptions and useful explanations.",
   },
 ];
-export default function Skills() {
+export default function Skills({ embedded = false }: { embedded?: boolean }) {
   return (
     <div className="page">
       <Heading
+        embedded={embedded}
         index="03 / CAPABILITIES"
         title="The tools behind the work."
         copy="A practical stack for building interfaces, connecting systems and working with data."
@@ -78,7 +79,7 @@ export default function Skills() {
           </div>
         ))}
       </section>
-      <Next href="/projects" label="See the tools in practice" />
+      {!embedded && <Next href="/projects" label="See the tools in practice" />}
     </div>
   );
 }

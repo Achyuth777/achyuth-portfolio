@@ -38,16 +38,16 @@
   position: relative;
   z-index: 2;
 }
-.personal-intro h1 {
+.personal-intro .personal-title {
   font-size: clamp(66px, 7.7vw, 116px);
   margin: 28px 0 32px;
   position: relative;
   line-height: 1.02;
 }
-.personal-intro h1 span {
+.personal-intro .personal-title span {
   color: #ef9956;
 }
-.personal-intro h1 svg {
+.personal-intro .personal-title svg {
   position: absolute;
   width: 92px;
   bottom: -22px;
@@ -525,7 +525,7 @@
     gap: 5%;
     padding: 140px 6vw 90px;
   }
-  .personal-intro h1 {
+  .personal-intro .personal-title {
     font-size: 70px;
   }
   .personal-intro p {
@@ -572,11 +572,11 @@
     gap: 60px;
     align-items: stretch;
   }
-  .personal-intro h1 {
+  .personal-intro .personal-title {
     font-size: clamp(63px, 16vw, 92px);
     margin-top: 22px;
   }
-  .personal-intro h1 svg {
+  .personal-intro .personal-title svg {
     left: 65%;
   }
   .personal-intro .personal-lede {
@@ -760,7 +760,7 @@
   .personal-intro-copy > .label {
     order: 0;
   }
-  .personal-intro h1 {
+  .personal-intro .personal-title {
     order: 1;
     margin-bottom: 65px;
   }

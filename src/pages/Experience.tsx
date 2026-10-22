@@ -103,13 +103,18 @@ const credentials = [
     "",
   ],
 ];
-export default function Experience() {
+export default function Experience({
+  embedded = false,
+}: {
+  embedded?: boolean;
+}) {
   const [filter, setFilter] = useState("All");
   const [opened, setOpened] = useState<string[]>([]);
   const visible = chapters.filter((c) => filter === "All" || c.kind === filter);
   return (
     <div className="page journey-page">
       <Heading
+        embedded={embedded}
         index="04 / JOURNEY"
         title="How I got here. What I’m trying next."
         copy="College, communities, a bit of teaching, and projects that kept me curious. Here are the chapters so far."
@@ -156,15 +161,13 @@ export default function Experience() {
                   e.preventDefault();
                   setFilter("All");
                   requestAnimationFrame(() =>
-                    document
-                      .getElementById("chapter-" + y)
-                      ?.scrollIntoView({
-                        behavior: matchMedia("(prefers-reduced-motion: reduce)")
-                          .matches
-                          ? "instant"
-                          : "smooth",
-                        block: "start",
-                      }),
+                    document.getElementById("chapter-" + y)?.scrollIntoView({
+                      behavior: matchMedia("(prefers-reduced-motion: reduce)")
+                        .matches
+                        ? "instant"
+                        : "smooth",
+                      block: "start",
+                    }),
                   );
                 }}
               >
@@ -304,7 +307,9 @@ export default function Experience() {
           Read the original blog ↗
         </a>
       </details>
-      <Next href="/contact" label="Want to talk about any of this?" />
+      {!embedded && (
+        <Next href="/contact" label="Want to talk about any of this?" />
+      )}
     </div>
   );
 }

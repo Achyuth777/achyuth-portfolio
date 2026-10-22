@@ -91,7 +91,7 @@ export default function RoninHero() {
           {alternate ? "RETURN TO DAY" : "SHIFT REALITY"}
         </button>
         <div className="ronin-bottom">
-          <a className="ronin-profile" href="/about">
+          <a className="ronin-profile" href="#about">
             <span className="ronin-monogram">
               <RoninEmblem />
             </span>
