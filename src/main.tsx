@@ -13,3 +13,6 @@ import "./personal-about.css";
 
 import "lenis/dist/lenis.css";
 import "./home-refinement.css";
+
+// Final responsive and motion overrides, after the original design layers.
+import "./motion-polish.css";
