@@ -119,6 +119,17 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, [path]);
+  const sectionHref = (href: string) =>
+    path === "/"
+      ? {
+          "/": "#home",
+          "/about": "#about",
+          "/projects": "#projects",
+          "/skills": "#skills",
+          "/experience": "#journey",
+          "/contact": "#contact",
+        }[href] || href
+      : href;
   const p = projects.find((p) => path === "/projects/" + p.slug);
   let content =
     path === "/" ? (
@@ -169,7 +180,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
           {nav.slice(1, 5).map(([href, t]) => (
             <a
               key={href}
-              href={href}
+              href={sectionHref(href)}
               aria-current={path === href ? "page" : undefined}
             >
               {t}
@@ -177,7 +188,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
           ))}
         </nav>
         <div className="header-right">
-          <a className="header-contact" href="/contact">
+          <a className="header-contact" href={sectionHref("/contact")}>
             Let’s talk ↗
           </a>
           <button
@@ -243,7 +254,11 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
             {[...nav, ...projects.map((p) => ["/projects/" + p.slug, p.name])]
               .filter(([, t]) => t.toLowerCase().includes(query.toLowerCase()))
               .map(([href, t], i) => (
-                <a key={href} href={href} onClick={() => setMenu(false)}>
+                <a
+                  key={href}
+                  href={sectionHref(href)}
+                  onClick={() => setMenu(false)}
+                >
                   <span>{String(i + 1).padStart(2, "0")}</span>
                   {t}
                   <Arrow />

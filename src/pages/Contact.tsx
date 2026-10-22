@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { email } from "../data";
 import { Arrow, Label, Heading } from "../components/UI";
-export default function Contact() {
+export default function Contact({ embedded = false }: { embedded?: boolean }) {
   const [status, setStatus] = useState(""),
     [signal, setSignal] = useState(false);
   async function copy() {
@@ -18,6 +18,7 @@ export default function Contact() {
   return (
     <div className="page contact-page">
       <Heading
+        embedded={embedded}
         index="05 / CONTACT"
         title="Say hello."
         copy="If you’re working on something in fintech, Web3 or AI, I’d like to hear about it. You can also reach out about internships or my projects."

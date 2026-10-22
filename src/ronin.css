@@ -795,7 +795,7 @@ em {
   margin-top: 85px;
 }
 /* A single palette follows every existing route. */
-.page-heading h1 {
+.page-heading :is(h1, h2) {
   font-size: clamp(32px, 4.8vw, 70px);
   max-width: 1100px;
   letter-spacing: 0.01em;
@@ -1107,7 +1107,7 @@ em {
   .closing h2 {
     font-size: clamp(26px, 6.4vw, 38px);
   }
-  .page-heading h1 {
+  .page-heading :is(h1, h2) {
     font-size: clamp(29px, 7vw, 46px);
   }
   .about-story h2 {
@@ -1179,7 +1179,7 @@ em {
   .brand {
     font-size: 9px;
   }
-  .page-heading h1 {
+  .page-heading :is(h1, h2) {
     font-size: 28px;
   }
   .ronin-header {

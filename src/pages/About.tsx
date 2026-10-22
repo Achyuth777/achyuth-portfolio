@@ -89,7 +89,8 @@ function InterestDrawing({ kind }: { kind: string }) {
     </svg>
   );
 }
-export default function About() {
+export default function About({ embedded = false }: { embedded?: boolean }) {
+  const Title = embedded ? "h2" : "h1";
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const item = interests[active];
@@ -97,15 +98,15 @@ export default function About() {
     <div className={"personal-about " + (paused ? "motion-paused" : "")}>
       <section className="personal-intro">
         <div className="personal-intro-copy">
-          <Label>01 / ABOUT ME</Label>
-          <h1>
+          <Label>{embedded ? "02" : "01"} / ABOUT ME</Label>
+          <Title className="personal-title">
             Hey, I’m
             <br />
             <span>Achyuth.</span>
             <svg viewBox="0 0 100 30" aria-hidden="true">
               <path d="M3 22Q35 2 96 12M16 28Q60 12 87 19" />
             </svg>
-          </h1>
+          </Title>
           <p className="personal-lede">
             IT student. Fintech curious.
             <br />
@@ -124,54 +125,58 @@ export default function About() {
             </button>
           </div>
         </div>
-        <figure className="portrait-composition">
-          <div className="portrait-halo" aria-hidden="true" />
-          <div className="portrait-orbit" aria-hidden="true">
-            <svg viewBox="0 0 120 120">
-              <path
-                id="portrait-circle"
-                d="M60 10a50 50 0 1 1-.1 0"
-                fill="none"
+        {!embedded && (
+          <figure className="portrait-composition">
+            <div className="portrait-halo" aria-hidden="true" />
+            <div className="portrait-orbit" aria-hidden="true">
+              <svg viewBox="0 0 120 120">
+                <path
+                  id="portrait-circle"
+                  d="M60 10a50 50 0 1 1-.1 0"
+                  fill="none"
+                />
+                <text>
+                  <textPath href="#portrait-circle">
+                    CHENNAI · IT STUDENT · CHENNAI · IT STUDENT ·{" "}
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+            <div className="portrait-paper">
+              <img
+                src="/portraits/achyuth.webp"
+                width="1105"
+                height="1423"
+                alt="Achyuth PV wearing a dark suit and white shirt"
+                fetchPriority="high"
               />
-              <text>
-                <textPath href="#portrait-circle">
-                  CHENNAI · IT STUDENT · CHENNAI · IT STUDENT ·{" "}
-                </textPath>
-              </text>
+              <figcaption>
+                <span>Achyuth PV</span>
+                <span>IT-A / SRMIST ↗</span>
+              </figcaption>
+            </div>
+            <span className="portrait-sticker sticker-college">
+              CHENNAI, INDIA
+              <br />
+              <strong>Home for now.</strong>
+            </span>
+            <span className="portrait-sticker sticker-note">
+              Yep, that’s me.
+            </span>
+            <svg
+              className="portrait-doodle"
+              viewBox="0 0 120 120"
+              aria-hidden="true"
+            >
+              <path
+                d="M14 12q83 9 64 67M57 65l19 21 23-15M25 28l9 10M12 48l16 4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+              />
             </svg>
-          </div>
-          <div className="portrait-paper">
-            <img
-              src="/portraits/achyuth.webp"
-              width="1105"
-              height="1423"
-              alt="Achyuth PV wearing a dark suit and white shirt"
-              fetchPriority="high"
-            />
-            <figcaption>
-              <span>Achyuth PV</span>
-              <span>IT-A / SRMIST ↗</span>
-            </figcaption>
-          </div>
-          <span className="portrait-sticker sticker-college">
-            CHENNAI, INDIA
-            <br />
-            <strong>Home for now.</strong>
-          </span>
-          <span className="portrait-sticker sticker-note">Yep, that’s me.</span>
-          <svg
-            className="portrait-doodle"
-            viewBox="0 0 120 120"
-            aria-hidden="true"
-          >
-            <path
-              d="M14 12q83 9 64 67M57 65l19 21 23-15M25 28l9 10M12 48l16 4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-          </svg>
-        </figure>
+          </figure>
+        )}
       </section>
       <div
         className="personal-ribbon"
@@ -216,7 +221,10 @@ export default function About() {
             explain the choices behind it. There’s plenty I’m still figuring
             out.
           </p>
-          <a className="story-journey-link" href="/experience">
+          <a
+            className="story-journey-link"
+            href={embedded ? "#journey" : "/experience"}
+          >
             The events, roles and courses along the way <span>↗</span>
           </a>
         </div>
@@ -335,13 +343,18 @@ export default function About() {
           <br />
           <span>If we share an interest, say hello.</span>
         </p>
-        <a href="/contact">
+        <a href={embedded ? "#contact" : "/contact"}>
           Let’s talk <span>↗</span>
         </a>
       </div>
-      <div className="personal-next">
-        <Next href="/experience" label="The story so far" />
-      </div>
+      {!embedded && (
+        <div className="personal-next">
+          <Next
+            href={embedded ? "#journey" : "/experience"}
+            label="The story so far"
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -35,15 +35,18 @@ export function Heading({
   index,
   title,
   copy,
+  embedded = false,
 }: {
   index: string;
   title: string;
   copy?: string;
+  embedded?: boolean;
 }) {
+  const Title = embedded ? "h2" : "h1";
   return (
     <header className="page-heading">
       <Label>{index} / ACHYUTH PV</Label>
-      <h1>{title}</h1>
+      <Title>{title}</Title>
       {copy && <p className="lede">{copy}</p>}
     </header>
   );
