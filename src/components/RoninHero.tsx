@@ -66,6 +66,7 @@ export default function RoninHero() {
             <a className="button primary" href="#projects">
               Explore my work <span>↘</span>
             </a>
+            <a className="button resume-link" href="/resume/achyuth-pv-resume.pdf" target="_blank" rel="noreferrer">View résumé ↗</a>
             <a
               className="ronin-github"
               href="https://github.com/Achyuth777"

@@ -27,6 +27,9 @@ for route,page in pages.items():
   parsed=urlparse(href)
   if parsed.scheme or parsed.netloc:continue
   dest=parsed.path or route
+  if dest.endswith(".pdf"):
+   assert (root/dest.lstrip("/")).is_file(),(route,"missing PDF",href)
+   continue
   assert dest in pages,(route,'unknown route',href)
   if parsed.fragment:assert unquote(parsed.fragment)in pages[dest].ids,(route,'missing anchor',href)
  for label in page.labels:assert label in page.ids,(route,'missing label target',label)
