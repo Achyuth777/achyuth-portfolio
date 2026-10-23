@@ -141,6 +141,7 @@ export default function Contact({ embedded = false }: { embedded?: boolean }) {
           </small>
         </form>
       </div>
+      <p className="resume-download"><a className="button" href="/resume/achyuth-pv-resume.pdf" download>Download résumé (PDF) ↓</a></p>
       <div className="contact-finale">
         <span>EVERY GREAT SYSTEM</span>
         <strong>starts with a human.</strong>

@@ -249,6 +249,14 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
           ))}
         </nav>
         <div className="header-right">
+          <a
+            className="header-resume"
+            href="/resume/achyuth-pv-resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Résumé ↗
+          </a>
           <a className="header-contact" href={sectionHref("/contact")}>
             Let’s talk ↗
           </a>
