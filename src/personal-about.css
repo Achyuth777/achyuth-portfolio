@@ -215,52 +215,46 @@
   animation: personal-orbit 22s linear infinite;
 }
 .personal-story {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 10%;
-  max-width: 1280px;
+  max-width: 960px;
   margin: auto;
-  padding: 115px 6vw;
+  padding: 76px 6vw;
 }
-.story-margin {
-  font: 10px monospace;
-  letter-spacing: 0.1em;
-  color: var(--lilac);
-  padding-top: 12px;
-}
-.story-margin svg {
+.story-eyebrow {
   display: block;
-  width: 125px;
-  margin-top: 42px;
-  transform: rotate(-10deg);
+  margin-bottom: 20px;
+  font: 10px/1.5 monospace;
+  letter-spacing: 0.13em;
+  color: var(--lilac);
 }
 .personal-story h2 {
-  font-size: clamp(32px, 3.5vw, 51px);
-  margin: 0 0 30px;
+  font-size: clamp(30px, 3.5vw, 46px);
+  line-height: 1.16;
+  margin: 0 0 22px;
 }
 .personal-story h2 em {
-  font:
-    italic 1.08em Georgia,
-    serif;
-  letter-spacing: -0.05em;
+  font: italic 1.04em Georgia, serif;
+  letter-spacing: -0.04em;
   color: var(--lilac);
 }
 .personal-story-copy > p {
+  max-width: 60ch;
   color: #cbb9a5;
-  margin: 20px 0;
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0;
 }
 .story-journey-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-block: 1px solid #fbdbaf30;
-  padding: 22px 0;
-  margin-top: 30px;
+  gap: 16px;
+  min-height: 44px;
+  border-bottom: 1px solid #fbdbaf45;
+  padding: 10px 0;
+  margin-top: 24px;
   font-size: 14px;
 }
 .story-journey-link span {
-  font-size: 26px;
+  font-size: 20px;
   color: var(--lilac);
   transition: transform 0.2s;
 }
@@ -549,10 +543,6 @@
     flex-wrap: wrap;
     font-size: 10px;
   }
-  .personal-story {
-    gap: 6%;
-    grid-template-columns: 1fr 2.5fr;
-  }
   .personal-worknotes {
     gap: 6%;
     grid-template-columns: 1fr 1.4fr;
@@ -639,19 +629,7 @@
   }
   .personal-story {
     display: block;
-    padding: 64px 24px;
-  }
-  .story-margin {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-  }
-  .story-margin svg {
-    width: 55px;
-    height: 55px;
-    margin: 0;
-    transform: rotate(70deg);
+    padding: 52px 24px;
   }
   .personal-story h2 {
     font-size: 34px;
