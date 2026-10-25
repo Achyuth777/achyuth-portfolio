@@ -189,40 +189,17 @@ export default function About({ embedded = false }: { embedded?: boolean }) {
         <i>✳</i>
         <span>STILL LEARNING</span>
       </div>
-      <section id="my-story" className="personal-story">
-        <div className="story-margin">
-          <span>THE SHORT VERSION</span>
-          <svg viewBox="0 0 150 150" aria-hidden="true">
-            <path
-              d="M35 25q110 0 65 80Q60 160 30 95q-18-48 63-40M79 41l18 13-13 19"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-            />
-          </svg>
-        </div>
+      <section id="my-story" className="personal-story" aria-labelledby="story-title">
         <div className="personal-story-copy">
-          <h2>
-            The interest in finance
-            <br />
-            came <em>before the apps.</em>
-          </h2>
+          <span className="story-eyebrow">WHAT GOT ME STARTED</span>
+          <h2 id="story-title">Curious about finance.<br /><em>Learning by building.</em></h2>
           <p>
-            Markets, payments and Web3 caught my attention early. Going to
-            events around Chennai gave me people to talk to about them. Building
-            projects gave me a way to try some of the ideas for myself.
+            Markets and payments got me interested in tech. Web3 meetups in
+            Chennai gave me people to learn from. Now I’m exploring those
+            interests through projects, one idea at a time.
           </p>
-          <p>
-            I’m not trying to make every project sound like a startup. I want to
-            understand the problem, get something working, and be able to
-            explain the choices behind it. There’s plenty I’m still figuring
-            out.
-          </p>
-          <a
-            className="story-journey-link"
-            href={embedded ? "#journey" : "/experience"}
-          >
-            The events, roles and courses along the way <span>↗</span>
+          <a className="story-journey-link" href={embedded ? "#journey" : "/experience"}>
+            View my journey <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
