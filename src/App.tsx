@@ -13,6 +13,7 @@ import CaseStudy from "./pages/CaseStudy";
 import Skills from "./pages/Skills";
 import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
+import { Analytics } from "@vercel/analytics/react";
 export default function App({ initialPath = "/" }: { initialPath?: string }) {
   const [path, setPath] = useState(initialPath);
   const [menu, setMenu] = useState(false);
@@ -344,6 +345,7 @@ export default function App({ initialPath = "/" }: { initialPath?: string }) {
           <small>⌘ / Ctrl K to open · Esc to close</small>
         </div>
       </dialog>
+      <Analytics />
     </>
   );
 }
