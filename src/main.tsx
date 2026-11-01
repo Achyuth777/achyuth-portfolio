@@ -1,9 +1,15 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
+import { Analytics } from "@vercel/analytics/react";
 import App from "./App";
 import "./style.css";
 import "./ronin.css";
 const root = document.getElementById("root")!;
-const app = <App initialPath={location.pathname.replace(/\/$/, "") || "/"} />;
+const app = (
+  <>
+    <App initialPath={location.pathname.replace(/\/$/, "") || "/"} />
+    <Analytics />
+  </>
+);
 if (root.children.length) hydrateRoot(root, app);
 else createRoot(root).render(app);
 
